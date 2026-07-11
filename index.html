@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tempahan Baju SPX MERDEKA 2026 🇲🇾</title>
+    <!-- Menggunakan font moden untuk gaya premium -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Variables untuk Tema Merdeka & Premium */
+        :root {
+            --primary: #E3000F; /* Merah Merdeka */
+            --secondary: #00225D; /* Biru Gelap */
+            --accent: #FFCC00; /* Kuning Diraja */
+            --text-dark: #1F2937;
+            --text-light: #6B7280;
+            --bg-light: #F9FAFB;
+            --white: #FFFFFF;
+            --success: #10B981;
+            --radius: 12px;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--secondary) 0%, #001133 100%);
+            color: var(--white);
+            padding: 60px 20px 120px; /* Ditambah padding bawah untuk muatkan gambar */
+            text-align: center;
+            border-bottom-left-radius: 40px;
+            border-bottom-right-radius: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%; right: -20%;
+            width: 300px; height: 300px;
+            background: radial-gradient(circle, rgba(227,0,15,0.2) 0%, rgba(0,0,0,0) 70%);
+            border-radius: 50%;
+        }
+
+        .badge {
+            background-color: var(--accent);
+            color: var(--text-dark);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-block;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 25px;
+            max-width: 600px;
+            margin-inline: auto;
+        }
+
+        .price-tag {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--accent);
+            margin: 10px 0 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .price-tag span {
+            font-size: 1.2rem;
+            font-weight: 600;
+            opacity: 0.8;
+            color: var(--white);
+        }
+
+        /* Product Image Section */
+        .product-preview {
+            margin-top: -100px; /* Tarik gambar ke atas sedikit supaya nampak terapung */
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 10;
+            text-align: center;
+        }
+
+        .product-preview img {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--radius);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+            border: 4px solid var(--white);
+            background-color: var(--white);
+        }
+        
+        .image-caption {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-top: 10px;
+            font-weight: 600;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 0 20px 40px;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 30px;
+            box-shadow: var(--shadow-lg);
+            margin-bottom: 30px;
+        }
+
+        .feature-list {
+            list-style: none;
+        }
+
+        .feature-list li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .feature-list li span {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--success);
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin-right: 15px;
+            font-size: 1.2rem;
+        }
+
+        /* Timeline / Urgency */
+        .timeline {
+            background: #FFFBEB;
+            border-left: 5px solid var(--accent);
+            padding: 20px;
+            border-radius: 0 var(--radius) var(--radius) 0;
+            margin-bottom: 30px;
+        }
+
+        .timeline-item {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .timeline-item strong {
+            min-width: 130px;
+            display: inline-block;
+            color: var(--primary);
+        }
+
+        /* Calculator / Order Form */
+        .order-section h2 {
+            text-align: center;
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            color: var(--secondary);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #E5E7EB;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: var(--bg-light);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--secondary);
+            background: var(--white);
+        }
+
+        .radio-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        /* Custom Radio Buttons */
+        .radio-card {
+            position: relative;
+            cursor: pointer;
+        }
+        .radio-card input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+        .radio-content {
+            border: 2px solid #E5E7EB;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            transition: all 0.2s ease;
+            background: var(--white);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .radio-card input:checked ~ .radio-content {
+            border-color: var(--primary);
+            background: #FEF2F2;
+        }
+        .radio-title {
+            font-weight: 700;
+            display: block;
+        }
+        .radio-price {
+            font-size: 0.9rem;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* Total & CTA Button */
+        .total-box {
+            background: var(--secondary);
+            color: var(--white);
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+
+        .total-box h3 {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            font-weight: 400;
+        }
+
+        .total-amount {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--accent);
+        }
+
+        .btn-whatsapp {
+            display: block;
+            width: 100%;
+            background-color: #25D366;
+            color: white;
+            text-align: center;
+            padding: 18px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 800;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-whatsapp:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+        }
+
+        .note {
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-top: 15px;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 2rem; }
+            .radio-group { grid-template-columns: 1fr; }
+            .product-preview { margin-top: -80px; }
+        }
+
+        /* Sticky Footer CTA Mobile */
+        .sticky-cta {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: var(--white);
+            padding: 15px 20px;
+            box-shadow: 0 -4px 10px rgba(0,0,0,0.05);
+            display: none;
+            z-index: 100;
+        }
+        @media (max-width: 768px) {
+            .sticky-cta { display: block; }
+            body { padding-bottom: 80px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HERO SECTION -->
+    <header class="hero">
+        <div class="container">
+            <div class="badge">Edisi Terhad Kemerdekaan 69th</div>
+            <h1>SPX MERDEKA 2026 🇲🇾</h1>
+            <p>Tampil bergaya, selesa & patriotik menyambut Hari Kebangsaan dengan jersi premium eksklusif SPX Express. "SPX Maju Jaya"</p>
+            
+            <div class="price-tag">
+                <span>Bermula dari</span><br>
+                RM45
+            </div>
+        </div>
+    </header>
+
+    <!-- CONTENT SECTION -->
+    <main class="container">
+        
+        <!-- PRODUCT IMAGE PREVIEW -->
+        <section class="product-preview">
+            <!-- 
+                Gambar 'image.png' akan dipaparkan di sini. 
+                Sila pastikan fail gambar berada dalam folder yang sama dengan fail HTML ini.
+            -->
+            <img src="image.png" alt="Rekaan Jersi SPX Merdeka 2026" onerror="this.src='https://placehold.co/800x600/00225D/FFFFFF?text=Gambar+Baju+SPX+Merdeka'">
+            <div class="image-caption">🔍 Pandangan Hadapan & Belakang Rekaan Jersi</div>
+        </section>
+
+        <!-- USP & Features -->
+        <section class="features">
+            <div class="card">
+                <ul class="feature-list">
+                    <li><span>👕</span> Kain Tebal Premium 180gsm (Selesa & Tak Panas)</li>
+                    <li><span>📌</span> Boleh Paku Nama Sendiri (Custom Name)</li>
+                    <li><span>🎯</span> Kualiti Cetakan Penuh (Full Sublimation) Tahan Lama</li>
+                </ul>
+            </div>
+
+            <!-- Timeline Urgency -->
+            <div class="timeline">
+                <div class="timeline-item">
+                    <strong>🔐 Tutup Order:</strong> 
+                    <span>8 Ogos 2026 (Khamis)</span>
+                </div>
+                <div class="timeline-item">
+                    <strong>💵 Bayaran Akhir:</strong> 
+                    <span>8 Ogos 2026 (Time gaji last)</span>
+                </div>
+                <div class="timeline-item">
+                    <strong>📦 Jangkaan Dapat:</strong> 
+                    <span>31 Ogos 2026 (In sha Allah sempat rasmi!)</span>
+                </div>
+            </div>
+
+            <!-- Order Calculator Section -->
+            <div class="card order-section" id="tempah">
+                <h2>Bina Baju Anda & Tempah</h2>
+                
+                <form id="orderForm">
+                    <!-- Custom Name -->
+                    <div class="form-group">
+                        <label for="customName">Paku Nama (Custom Name) - Percuma!</label>
+                        <input type="text" id="customName" class="form-control" placeholder="Contoh: AHMAD (Kosongkan jika tak mahu)">
+                    </div>
+
+                    <!-- Sleeve & Collar Options -->
+                    <div class="form-group">
+                        <label>Jenis Baju (Add-on)</label>
+                        <div class="radio-group" style="grid-template-columns: 1fr;">
+                            <label class="radio-card">
+                                <input type="radio" name="bajuType" value="0" checked onchange="calculateTotal()">
+                                <div class="radio-content">
+                                    <span class="radio-title">Round Neck (Lengan Pendek)</span>
+                                    <span class="radio-price">Harga Asas (RM45)</span>
+                                </div>
+                            </label>
+                        </div>
+                        <div class="radio-group" style="margin-top:15px;">
+                            <label class="radio-card">
+                                <input type="checkbox" id="lenganPanjang" value="7" onchange="calculateTotal()">
+                                <div class="radio-content">
+                                    <span class="radio-title">Lengan Panjang</span>
+                                    <span class="radio-price">+ RM7</span>
+                                </div>
+                            </label>
+                            <label class="radio-card">
+                                <input type="checkbox" id="berkolar" value="8" onchange="calculateTotal()">
+                                <div class="radio-content">
+                                    <span class="radio-title">Berkolar (Collar)</span>
+                                    <span class="radio-price">+ RM8</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Size Options -->
+                    <div class="form-group">
+                        <label>Pilih Saiz Anda</label>
+                        <select id="sizeSelect" class="form-control" onchange="calculateTotal()">
+                            <option value="0" data-name="XS - 2XL">Standard (XS hingga 2XL) - Tiada Cas Tambahan</option>
+                            <option value="5" data-name="3XL - 5XL">Plus Size (3XL - 5XL) - Tambah RM5</option>
+                            <option value="10" data-name="6XL - 7XL">Super Plus (6XL - 7XL) - Tambah RM10</option>
+                            <option value="12" data-name="8XL - 9XL">Ultra Plus (8XL - 9XL) - Tambah RM12</option>
+                        </select>
+                    </div>
+
+                    <!-- Kuantiti -->
+                    <div class="form-group">
+                        <label>Kuantiti</label>
+                        <input type="number" id="kuantiti" class="form-control" value="1" min="1" onchange="calculateTotal()" onkeyup="calculateTotal()">
+                    </div>
+
+                    <!-- Total Calculation -->
+                    <div class="total-box">
+                        <h3>Jumlah Anggaran</h3>
+                        <div class="total-amount" id="totalPriceDisplay">RM 45</div>
+                    </div>
+
+                    <button type="button" class="btn-whatsapp" onclick="submitToWhatsApp()">
+                        Hantar Tempahan ke WhatsApp
+                    </button>
+                    <p class="note">Anda akan dibawa ke aplikasi WhatsApp untuk pengesahan.</p>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Sticky Mobile Button -->
+    <div class="sticky-cta">
+        <a href="#tempah" class="btn-whatsapp" style="padding: 15px; font-size: 1.1rem;">Tempah Sekarang</a>
+    </div>
+
+    <!-- JavaScript for Calculator and WhatsApp Logic -->
+    <script>
+        const BASE_PRICE = 45;
+
+        function calculateTotal() {
+            // Dapatkan kuantiti
+            let qty = parseInt(document.getElementById('kuantiti').value) || 1;
+            if (qty < 1) qty = 1;
+
+            // Dapatkan cas lengan/kolar
+            let addonSleeve = document.getElementById('lenganPanjang').checked ? 7 : 0;
+            let addonCollar = document.getElementById('berkolar').checked ? 8 : 0;
+
+            // Dapatkan cas saiz
+            let sizeSelect = document.getElementById('sizeSelect');
+            let sizeCas = parseInt(sizeSelect.value);
+
+            // Kira jumlah (Base + cas saiz + lengan + kolar) didarab dengan kuantiti
+            let pricePerItem = BASE_PRICE + sizeCas + addonSleeve + addonCollar;
+            let total = pricePerItem * qty;
+
+            // Update UI
+            document.getElementById('totalPriceDisplay').innerText = "RM " + total;
+            
+            return {
+                pricePerItem,
+                total,
+                qty,
+                addonSleeve,
+                addonCollar,
+                sizeName: sizeSelect.options[sizeSelect.selectedIndex].getAttribute('data-name')
+            };
+        }
+
+        function submitToWhatsApp() {
+            const data = calculateTotal();
+            
+            // Kumpul maklumat borang
+            const customName = document.getElementById('customName').value || 'Tiada';
+            let jenisBaju = "Round Neck Lengan Pendek";
+            
+            if(data.addonSleeve > 0 && data.addonCollar > 0) {
+                jenisBaju = "Berkolar Lengan Panjang";
+            } else if (data.addonSleeve > 0) {
+                jenisBaju = "Round Neck Lengan Panjang";
+            } else if (data.addonCollar > 0) {
+                jenisBaju = "Berkolar Lengan Pendek";
+            }
+
+            // Nombor Telefon (Format: 60 + nombor tanpa 0 di depan)
+            const phone = "60136201301";
+
+            // Format Mesej WhatsApp
+            let message = `*TEMPAHAN BAJU SPX MERDEKA 2026 🇲🇾*\n\n`;
+            message += `Hi, saya ingin membuat tempahan dengan butiran berikut:\n\n`;
+            message += `*Nama Pada Baju:* ${customName}\n`;
+            message += `*Jenis:* ${jenisBaju}\n`;
+            message += `*Saiz:* ${data.sizeName}\n`;
+            message += `*Kuantiti:* ${data.qty} helai\n`;
+            message += `--------------------------\n`;
+            message += `*Anggaran Jumlah: RM ${data.total}*\n`;
+            message += `--------------------------\n\n`;
+            message += `Mohon berikan maklumat akaun pembayaran untuk saya sahkan tempahan ini sebelum tarikh tutup 8/8. Terima kasih!`;
+
+            // Encode text untuk URL
+            const encodedMessage = encodeURIComponent(message);
+            
+            // Buka Link WhatsApp
+            const whatsappLink = `https://api.whatsapp.com/send?phone=${phone}&text=${encodedMessage}`;
+            window.open(whatsappLink, '_blank');
+        }
+
+        // Initialize kalkulator pada muat turun pertama
+        window.onload = calculateTotal;
+    </script>
+</body>
+</html>
