@@ -288,15 +288,25 @@
             font-weight: 600;
         }
 
-        /* Total & CTA Button */
+        /* Total & QR Payment Section */
+        .payment-section {
+            background: #F8FAFC;
+            border: 2px dashed #CBD5E1;
+            padding: 25px;
+            border-radius: var(--radius);
+            text-align: center;
+            margin-top: 30px;
+            margin-bottom: 25px;
+        }
+
         .total-box {
             background: var(--secondary);
             color: var(--white);
             padding: 20px;
             border-radius: 8px;
             text-align: center;
-            margin-top: 30px;
             margin-bottom: 20px;
+            box-shadow: var(--shadow);
         }
 
         .total-box h3 {
@@ -311,6 +321,29 @@
             color: var(--accent);
         }
 
+        .qr-container {
+            background: var(--white);
+            padding: 20px;
+            border-radius: var(--radius);
+            display: inline-block;
+            box-shadow: var(--shadow);
+            margin: 15px 0;
+        }
+
+        .qr-container img {
+            max-width: 200px;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .qr-instruction {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        /* CTA Button */
         .btn-whatsapp {
             display: block;
             width: 100%;
@@ -386,15 +419,15 @@
         <!-- PRODUCT IMAGE PREVIEW (GALLERY) -->
         <section class="product-preview">
             <div class="image-gallery">
-                <!-- Gambar Utama (Rekaan Baju) -->
+                <!-- Gambar Utama (Rekaan Baju) - Tukar nama fail kepada baju.png -->
                 <div class="image-wrapper">
-                    <img src="49c08a75-1c21-45ac-98bc-052ee9704f44.jpeg" alt="Rekaan Jersi SPX Merdeka 2026" onerror="this.src='https://placehold.co/800x800/00225D/FFFFFF?text=Gambar+Rekaan+Baju'">
+                    <img src="baju.png" alt="Rekaan Jersi SPX Merdeka 2026" onerror="this.src='https://placehold.co/800x800/00225D/FFFFFF?text=Gambar+Rekaan+Baju'">
                     <div class="image-caption">👕 Pandangan Hadapan & Belakang</div>
                 </div>
                 
-                <!-- Gambar Kedua (Contoh: Carta Saiz / Close up) -->
+                <!-- Gambar Kedua (Contoh: Carta Saiz / Close up) - Tukar nama fail kepada carta-saiz.png -->
                 <div class="image-wrapper">
-                    <img src="8fa73b09-5509-4cec-b1b6-52b3697193c4.jpeg" alt="Carta Saiz Jersi" onerror="this.src='https://placehold.co/800x800/E3000F/FFFFFF?text=Gambar+Carta+Saiz+(Sila+Masukkan+image2.png)'">
+                    <img src="carta-saiz.png" alt="Carta Saiz Jersi" onerror="this.src='https://placehold.co/800x800/E3000F/FFFFFF?text=Gambar+Carta+Saiz'">
                     <div class="image-caption">📏 Carta Saiz Jersi (Size Chart)</div>
                 </div>
             </div>
@@ -428,7 +461,7 @@
 
             <!-- Order Calculator Section -->
             <div class="card order-section" id="tempah">
-                <h2>Bina Baju Anda & Tempah</h2>
+                <h2>Bina Baju & Buat Bayaran</h2>
                 
                 <form id="orderForm">
                     <!-- Custom Name -->
@@ -477,9 +510,13 @@
                             <option value="0" data-name="L"> L </option>
                             <option value="0" data-name="XL"> XL </option>
                             <option value="0" data-name="2XL"> 2XL </option>
-                            <option value="5" data-name="3XL - 5XL">Plus Size (3XL - 5XL) - Tambah RM5</option>
-                            <option value="10" data-name="6XL - 7XL">Super Plus (6XL - 7XL) - Tambah RM10</option>
-                            <option value="12" data-name="8XL - 9XL">Ultra Plus (8XL - 9XL) - Tambah RM12</option>
+                            <option value="5" data-name="3XL - 5XL">Plus Size 3XL </option>
+                            <option value="5" data-name="3XL - 5XL">Plus Size 4XL </option>
+                            <option value="5" data-name="3XL - 5XL">Plus Size 5XL </option>
+                            <option value="10" data-name="6XL - 7XL">Super Plus 6XL </option>
+                            <option value="10" data-name="6XL - 7XL">Super Plus 7XL </option>
+                            <option value="12" data-name="8XL - 9XL">Ultra Plus 8XL </option>
+                            <option value="12" data-name="8XL - 9XL">Ultra Plus 9XL </option>
                         </select>
                     </div>
 
@@ -489,16 +526,32 @@
                         <input type="number" id="kuantiti" class="form-control" value="1" min="1" onchange="calculateTotal()" onkeyup="calculateTotal()">
                     </div>
 
-                    <!-- Total Calculation -->
-                    <div class="total-box">
-                        <h3>Jumlah Anggaran</h3>
-                        <div class="total-amount" id="totalPriceDisplay">RM 45</div>
+                    <!-- Payment & Total Section -->
+                    <div class="payment-section">
+                        <div class="total-box">
+                            <h3>Jumlah Perlu Dibayar</h3>
+                            <div class="total-amount" id="totalPriceDisplay">RM 45</div>
+                        </div>
+
+                        <div class="qr-instruction">Langkah 2: Sila Imbas (Scan) Untuk Bayaran</div>
+                        <p style="color: var(--text-light); font-size: 0.95rem; margin-bottom: 10px;">
+                            Sila buat bayaran ke DuitNow <strong>AEON Bank (Kushairi)</strong> menggunakan QR di bawah.
+                        </p>
+                        
+                        <div class="qr-container">
+                            <!-- Gambar QR DuitNow - Tukar nama fail kepada qr.png -->
+                            <img src="qr.png" alt="DuitNow QR Code Kushairi" onerror="this.src='https://placehold.co/400x500/E3000F/FFFFFF?text=DuitNow+QR'">
+                        </div>
+
+                        <p style="font-size: 0.9rem; margin-top: 15px; color: var(--primary); font-weight: 600;">
+                            ⚠️ PENTING: Sila <i>Screenshot</i> (tangkap layar) resit bayaran anda. Anda perlu lampirkannya di dalam WhatsApp sebentar lagi.
+                        </p>
                     </div>
 
                     <button type="button" class="btn-whatsapp" onclick="submitToWhatsApp()">
-                        Hantar Tempahan ke WhatsApp
+                        Sahkan Tempahan ke WhatsApp
                     </button>
-                    <p class="note">Anda akan dibawa ke aplikasi WhatsApp untuk pengesahan.</p>
+                    <p class="note">Anda akan dibawa ke aplikasi WhatsApp. <strong>Jangan lupa hantar resit sekali!</strong></p>
                 </form>
             </div>
         </section>
@@ -506,7 +559,7 @@
 
     <!-- Sticky Mobile Button -->
     <div class="sticky-cta">
-        <a href="#tempah" class="btn-whatsapp" style="padding: 15px; font-size: 1.1rem;">Tempah Sekarang</a>
+        <a href="#tempah" class="btn-whatsapp" style="padding: 15px; font-size: 1.1rem;">Tempah & Bayar Sekarang</a>
     </div>
 
     <!-- JavaScript for Calculator and WhatsApp Logic -->
@@ -530,7 +583,7 @@
             let pricePerItem = BASE_PRICE + sizeCas + addonSleeve + addonCollar;
             let total = pricePerItem * qty;
 
-            // Update UI
+            // Update UI (Papar Jumlah)
             document.getElementById('totalPriceDisplay').innerText = "RM " + total;
             
             return {
@@ -558,20 +611,20 @@
                 jenisBaju = "Berkolar Lengan Pendek";
             }
 
-            // Nombor Telefon (Format: 60 + nombor tanpa 0 di depan)
+            // Nombor Telefon WhatsApp Admin (Format: 60 + nombor tanpa 0 di depan)
             const phone = "60136201301";
 
             // Format Mesej WhatsApp
             let message = `*TEMPAHAN BAJU SPX MERDEKA 2026 🇲🇾*\n\n`;
-            message += `Hi, saya ingin membuat tempahan dengan butiran berikut:\n\n`;
+            message += `Hi, saya telah buat bayaran untuk tempahan dengan butiran berikut:\n\n`;
             message += `*Nama Pada Baju:* ${customName}\n`;
             message += `*Jenis:* ${jenisBaju}\n`;
             message += `*Saiz:* ${data.sizeName}\n`;
             message += `*Kuantiti:* ${data.qty} helai\n`;
             message += `--------------------------\n`;
-            message += `*Anggaran Jumlah: RM ${data.total}*\n`;
+            message += `*Jumlah Dibayar: RM ${data.total}*\n`;
             message += `--------------------------\n\n`;
-            message += `Mohon berikan maklumat akaun pembayaran untuk saya sahkan tempahan ini sebelum tarikh tutup 8/8. Terima kasih!`;
+            message += `Saya sertakan resit DuitNow (AEON Bank) bersama mesej ini. Mohon semak & sahkan ya. Terima kasih!`;
 
             // Encode text untuk URL
             const encodedMessage = encodeURIComponent(message);
@@ -586,6 +639,3 @@
     </script>
 </body>
 </html>
-
-
-
