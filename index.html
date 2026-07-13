@@ -108,32 +108,53 @@
 
         /* Product Image Section */
         .product-preview {
-            margin-top: -100px; /* Tarik gambar ke atas sedikit supaya nampak terapung */
+            margin-top: -80px; /* Tarik gambar ke atas sedikit supaya nampak terapung */
             margin-bottom: 40px;
             position: relative;
             z-index: 10;
+        }
+
+        .image-gallery {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        @media (min-width: 600px) {
+            .image-gallery {
+                grid-template-columns: 1fr 1fr; /* 2 gambar sebelah menyebelah untuk desktop */
+            }
+        }
+
+        .image-wrapper {
             text-align: center;
         }
 
         .product-preview img {
-            max-width: 100%;
+            width: 100%;
             height: auto;
             border-radius: var(--radius);
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
             border: 4px solid var(--white);
             background-color: var(--white);
+            object-fit: cover;
         }
         
         .image-caption {
             font-size: 0.9rem;
-            color: var(--text-light);
-            margin-top: 10px;
-            font-weight: 600;
+            color: var(--text-dark);
+            margin-top: 12px;
+            font-weight: 700;
+            background: var(--white);
+            padding: 8px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            display: inline-block;
         }
 
         /* Features Section */
         .features {
-            padding: 0 20px 40px;
+            padding: 0 0 40px;
         }
 
         .card {
@@ -323,7 +344,6 @@
         @media (max-width: 600px) {
             .hero h1 { font-size: 2rem; }
             .radio-group { grid-template-columns: 1fr; }
-            .product-preview { margin-top: -80px; }
         }
 
         /* Sticky Footer CTA Mobile */
@@ -363,14 +383,21 @@
     <!-- CONTENT SECTION -->
     <main class="container">
         
-        <!-- PRODUCT IMAGE PREVIEW -->
+        <!-- PRODUCT IMAGE PREVIEW (GALLERY) -->
         <section class="product-preview">
-            <!-- 
-                Gambar 'image.png' akan dipaparkan di sini. 
-                Sila pastikan fail gambar berada dalam folder yang sama dengan fail HTML ini.
-            -->
-            <img src="IMG_8714.jpeg" alt="Rekaan Jersi SPX Merdeka 2026" onerror="this.src='https://placehold.co/800x600/00225D/FFFFFF?text=Gambar+Baju+SPX+Merdeka'">
-            <div class="image-caption">🔍 Pandangan Hadapan & Belakang Rekaan Jersi</div>
+            <div class="image-gallery">
+                <!-- Gambar Utama (Rekaan Baju) -->
+                <div class="image-wrapper">
+                    <img src="image.png" alt="Rekaan Jersi SPX Merdeka 2026" onerror="this.src='https://placehold.co/800x800/00225D/FFFFFF?text=Gambar+Rekaan+Baju'">
+                    <div class="image-caption">👕 Pandangan Hadapan & Belakang</div>
+                </div>
+                
+                <!-- Gambar Kedua (Contoh: Carta Saiz / Close up) -->
+                <div class="image-wrapper">
+                    <img src="image2.png" alt="Carta Saiz Jersi" onerror="this.src='https://placehold.co/800x800/E3000F/FFFFFF?text=Gambar+Carta+Saiz+(Sila+Masukkan+image2.png)'">
+                    <div class="image-caption">📏 Carta Saiz Jersi (Size Chart)</div>
+                </div>
+            </div>
         </section>
 
         <!-- USP & Features -->
@@ -554,3 +581,6 @@
     </script>
 </body>
 </html>
+
+
+
