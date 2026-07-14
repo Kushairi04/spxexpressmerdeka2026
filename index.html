@@ -510,6 +510,10 @@
                     <div class="form-group">
                         <label for="customName"> NAMA (RUJUKAN) </label>
                         <input type="text" id="customName" class="form-control" placeholder="Contoh: AHMAD (Kosongkan jika tak mahu)">
+                    </div>
+                    
+                    <!-- Team Area -->
+                    <div class="form-group">
                         <label for="areateam"> TEAM AREA </label>
                         <input type="text" id="areateam" class="form-control" placeholder="Contoh: CSL">
                     </div>
@@ -689,8 +693,9 @@
             const data = calculateTotal();
             const errorBox = document.getElementById('errorContainer');
             
-            // Ambil data form
+            // Ambil data form (MEMBETULKAN RALAT 'areateam' DI SINI)
             const customName = document.getElementById('customName').value.trim() || 'Tiada';
+            const areateam = document.getElementById('areateam').value.trim() || 'Tiada';
             const deliverySelect = document.getElementById('deliverySelect');
             const deliveryVal = parseInt(deliverySelect.value);
             const deliveryText = deliverySelect.options[deliverySelect.selectedIndex].text.replace(/\(\+RM\d+\)/g, '').trim();
@@ -763,3 +768,4 @@
     </script>
 </body>
 </html>
+
