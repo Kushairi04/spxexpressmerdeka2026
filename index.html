@@ -17,6 +17,7 @@
             --bg-light: #F9FAFB;
             --white: #FFFFFF;
             --success: #10B981;
+            --error: #EF4444;
             --radius: 12px;
             --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
             --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
@@ -33,6 +34,7 @@
             background-color: var(--bg-light);
             color: var(--text-dark);
             line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
         }
 
         .container {
@@ -45,7 +47,7 @@
         .hero {
             background: linear-gradient(135deg, var(--secondary) 0%, #001133 100%);
             color: var(--white);
-            padding: 60px 20px 120px; /* Ditambah padding bawah untuk muatkan gambar */
+            padding: 60px 20px 120px;
             text-align: center;
             border-bottom-left-radius: 40px;
             border-bottom-right-radius: 40px;
@@ -108,7 +110,7 @@
 
         /* Product Image Section */
         .product-preview {
-            margin-top: -80px; /* Tarik gambar ke atas sedikit supaya nampak terapung */
+            margin-top: -80px;
             margin-bottom: 40px;
             position: relative;
             z-index: 10;
@@ -122,7 +124,7 @@
 
         @media (min-width: 600px) {
             .image-gallery {
-                grid-template-columns: 1fr 1fr; /* 2 gambar sebelah menyebelah untuk desktop */
+                grid-template-columns: 1fr 1fr;
             }
         }
 
@@ -146,7 +148,7 @@
             margin-top: 12px;
             font-weight: 700;
             background: var(--white);
-            padding: 8px;
+            padding: 8px 16px;
             border-radius: 8px;
             box-shadow: var(--shadow);
             display: inline-block;
@@ -238,12 +240,18 @@
             font-size: 1rem;
             transition: all 0.3s ease;
             background: var(--bg-light);
+            font-family: inherit;
+        }
+
+        textarea.form-control {
+            resize: vertical;
         }
 
         .form-control:focus {
             outline: none;
             border-color: var(--secondary);
             background: var(--white);
+            box-shadow: 0 0 0 3px rgba(0, 34, 93, 0.1);
         }
 
         .radio-group {
@@ -288,6 +296,35 @@
             font-weight: 600;
         }
 
+        /* Delivery Section */
+        .delivery-details {
+            display: none;
+            background: #F8FAFC;
+            border: 1px solid #E2E8F0;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 15px;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Error Message Box */
+        .error-message {
+            display: none;
+            background-color: #FEF2F2;
+            color: var(--error);
+            padding: 12px 15px;
+            border-radius: 8px;
+            border-left: 4px solid var(--error);
+            margin-bottom: 20px;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
         /* Total & QR Payment Section */
         .payment-section {
             background: #F8FAFC;
@@ -319,6 +356,12 @@
             font-size: 2.5rem;
             font-weight: 800;
             color: var(--accent);
+        }
+        
+        .breakdown {
+            font-size: 0.9rem;
+            color: #93C5FD;
+            margin-top: 5px;
         }
 
         .qr-container {
@@ -416,16 +459,14 @@
     <!-- CONTENT SECTION -->
     <main class="container">
         
-        <!-- PRODUCT IMAGE PREVIEW (GALLERY) -->
+        <!-- PRODUCT IMAGE PREVIEW -->
         <section class="product-preview">
             <div class="image-gallery">
-                <!-- Gambar Utama (Rekaan Baju) - Tukar nama fail kepada baju.png -->
                 <div class="image-wrapper">
-                    <img src="49c08a75-1c21-45ac-98bc-052ee9704f44.jpeg" alt="Rekaan Jersi SPX Merdeka 2026" onerror="this.src='https://placehold.co/800x800/00225D/FFFFFF?text=Gambar+Rekaan+Baju'"
+                    <img src="49c08a75-1c21-45ac-98bc-052ee9704f44.jpeg" alt="Rekaan Jersi SPX Merdeka 2026" onerror="this.src='https://placehold.co/800x800/00225D/FFFFFF?text=Gambar+Rekaan+Baju'">
                     <div class="image-caption">👕 Pandangan Hadapan & Belakang</div>
                 </div>
                 
-                <!-- Gambar Kedua (Contoh: Carta Saiz / Close up) - Tukar nama fail kepada carta-saiz.png -->
                 <div class="image-wrapper">
                     <img src="8fa73b09-5509-4cec-b1b6-52b3697193c4.jpeg" alt="Carta Saiz Jersi" onerror="this.src='https://placehold.co/800x800/E3000F/FFFFFF?text=Gambar+Carta+Saiz'">
                     <div class="image-caption">📏 Carta Saiz Jersi (Size Chart)</div>
@@ -442,7 +483,6 @@
                 </ul>
             </div>
 
-            <!-- Timeline Urgency -->
             <div class="timeline">
                 <div class="timeline-item">
                     <strong>🔐 Tutup Order:</strong> 
@@ -463,6 +503,9 @@
                 <h2>Bina Baju & Buat Bayaran</h2>
                 
                 <form id="orderForm">
+                    <!-- Error Message Container -->
+                    <div id="errorContainer" class="error-message"></div>
+
                     <!-- Custom Name -->
                     <div class="form-group">
                         <label for="customName"> NAMA (RUJUKAN) </label>
@@ -503,19 +546,19 @@
                     <div class="form-group">
                         <label>Pilih Saiz Anda</label>
                         <select id="sizeSelect" class="form-control" onchange="calculateTotal()">
-                            <option value="0" data-name="XS"> XS </option>
-                            <option value="0" data-name="S"> S </option>
-                            <option value="0" data-name="M"> M </option>
-                            <option value="0" data-name="L"> L </option>
-                            <option value="0" data-name="XL"> XL </option>
-                            <option value="0" data-name="2XL"> 2XL </option>
-                            <option value="5" data-name="3XL - 5XL">Plus Size 3XL </option>
-                            <option value="5" data-name="3XL - 5XL">Plus Size 4XL </option>
-                            <option value="5" data-name="3XL - 5XL">Plus Size 5XL </option>
-                            <option value="10" data-name="6XL - 7XL">Super Plus 6XL </option>
-                            <option value="10" data-name="6XL - 7XL">Super Plus 7XL </option>
-                            <option value="12" data-name="8XL - 9XL">Ultra Plus 8XL </option>
-                            <option value="12" data-name="8XL - 9XL">Ultra Plus 9XL </option>
+                            <option value="0"> XS </option>
+                            <option value="0"> S </option>
+                            <option value="0" selected> M </option>
+                            <option value="0"> L </option>
+                            <option value="0"> XL </option>
+                            <option value="0"> 2XL </option>
+                            <option value="5">Plus Size 3XL (+RM5)</option>
+                            <option value="5">Plus Size 4XL (+RM5)</option>
+                            <option value="5">Plus Size 5XL (+RM5)</option>
+                            <option value="10">Super Plus 6XL (+RM10)</option>
+                            <option value="10">Super Plus 7XL (+RM10)</option>
+                            <option value="12">Ultra Plus 8XL (+RM12)</option>
+                            <option value="12">Ultra Plus 9XL (+RM12)</option>
                         </select>
                     </div>
 
@@ -525,20 +568,42 @@
                         <input type="number" id="kuantiti" class="form-control" value="1" min="1" onchange="calculateTotal()" onkeyup="calculateTotal()">
                     </div>
 
+                    <!-- Delivery Options -->
+                    <div class="form-group">
+                        <label>Kaedah Penghantaran</label>
+                        <select id="deliverySelect" class="form-control" onchange="toggleDelivery(); calculateTotal();">
+                            <option value="0">Self Collect (Ambil Sendiri) - Percuma</option>
+                            <option value="8">Penghantaran ke Semenanjung (+RM8)</option>
+                            <option value="16">Penghantaran ke Sabah/Sarawak (+RM16)</option>
+                        </select>
+                    </div>
+
+                    <!-- Hidden Delivery Details -->
+                    <div id="deliveryDetails" class="delivery-details">
+                        <div class="form-group">
+                            <label for="phoneNum">Nombor Telefon</label>
+                            <input type="tel" id="phoneNum" class="form-control" placeholder="Contoh: 0123456789">
+                        </div>
+                        <div class="form-group" style="margin-bottom: 0;">
+                            <label for="address">Alamat Penuh</label>
+                            <textarea id="address" class="form-control" rows="3" placeholder="Masukkan alamat lengkap rumah anda..."></textarea>
+                        </div>
+                    </div>
+
                     <!-- Payment & Total Section -->
                     <div class="payment-section">
                         <div class="total-box">
                             <h3>Jumlah Perlu Dibayar</h3>
                             <div class="total-amount" id="totalPriceDisplay">RM 45</div>
+                            <div class="breakdown" id="breakdownDisplay">Termasuk kos penghantaran RM0</div>
                         </div>
 
-                        <div class="qr-instruction">Langkah 2: Sila Imbas (Scan) Untuk Bayaran</div>
+                        <div class="qr-instruction">Sila Imbas (Scan) Untuk Bayaran</div>
                         <p style="color: var(--text-light); font-size: 0.95rem; margin-bottom: 10px;">
                             Sila buat bayaran ke DuitNow <strong>AEON Bank (Kushairi)</strong> menggunakan QR di bawah.
                         </p>
                         
                         <div class="qr-container">
-                            <!-- Gambar QR DuitNow - Tukar nama fail kepada qr.png -->
                             <img src="IMG_8795.jpeg" alt="DuitNow QR Code Kushairi" onerror="this.src='https://placehold.co/400x500/E3000F/FFFFFF?text=DuitNow+QR'">
                         </div>
 
@@ -565,43 +630,87 @@
     <script>
         const BASE_PRICE = 45;
 
+        // Tunjuk/Sembunyi ruangan alamat berdasarkan pilihan penghantaran
+        function toggleDelivery() {
+            const deliveryVal = parseInt(document.getElementById('deliverySelect').value);
+            const deliveryBox = document.getElementById('deliveryDetails');
+            
+            if (deliveryVal > 0) {
+                deliveryBox.style.display = 'block';
+            } else {
+                deliveryBox.style.display = 'none';
+            }
+            
+            // Sembunyi error message bila tukar pilihan
+            document.getElementById('errorContainer').style.display = 'none';
+        }
+
         function calculateTotal() {
-            // Dapatkan kuantiti
+            // 1. Kuantiti
             let qty = parseInt(document.getElementById('kuantiti').value) || 1;
             if (qty < 1) qty = 1;
 
-            // Dapatkan cas lengan/kolar
+            // 2. Cas add-on baju
             let addonSleeve = document.getElementById('lenganPanjang').checked ? 7 : 0;
             let addonCollar = document.getElementById('berkolar').checked ? 8 : 0;
 
-            // Dapatkan cas saiz
+            // 3. Cas saiz
             let sizeSelect = document.getElementById('sizeSelect');
             let sizeCas = parseInt(sizeSelect.value);
+            let exactSizeName = sizeSelect.options[sizeSelect.selectedIndex].text.replace(/\(\+RM\d+\)/g, '').trim();
 
-            // Kira jumlah (Base + cas saiz + lengan + kolar) didarab dengan kuantiti
+            // 4. Cas penghantaran (dikira untuk sekali order, bukan per baju)
+            let deliveryCas = parseInt(document.getElementById('deliverySelect').value) || 0;
+
+            // 5. Kira Harga
             let pricePerItem = BASE_PRICE + sizeCas + addonSleeve + addonCollar;
-            let total = pricePerItem * qty;
+            let totalShirtPrice = pricePerItem * qty;
+            let grandTotal = totalShirtPrice + deliveryCas;
 
-            // Update UI (Papar Jumlah)
-            document.getElementById('totalPriceDisplay').innerText = "RM " + total;
+            // 6. Kemaskini UI
+            document.getElementById('totalPriceDisplay').innerText = "RM " + grandTotal;
+            document.getElementById('breakdownDisplay').innerText = `Termasuk kos penghantaran RM${deliveryCas}`;
             
             return {
                 pricePerItem,
-                total,
+                totalShirtPrice,
+                grandTotal,
                 qty,
                 addonSleeve,
                 addonCollar,
-                sizeName: sizeSelect.options[sizeSelect.selectedIndex].getAttribute('data-name')
+                sizeName: exactSizeName,
+                deliveryCas
             };
         }
 
         function submitToWhatsApp() {
             const data = calculateTotal();
+            const errorBox = document.getElementById('errorContainer');
             
-            // Kumpul maklumat borang
-            const customName = document.getElementById('customName').value || 'Tiada';
+            // Ambil data form
+            const customName = document.getElementById('customName').value.trim() || 'Tiada';
+            const deliverySelect = document.getElementById('deliverySelect');
+            const deliveryVal = parseInt(deliverySelect.value);
+            const deliveryText = deliverySelect.options[deliverySelect.selectedIndex].text.replace(/\(\+RM\d+\)/g, '').trim();
+            const phone = document.getElementById('phoneNum').value.trim();
+            const address = document.getElementById('address').value.trim();
+
+            // Validasi jika pilih penghantaran ke rumah
+            if (deliveryVal > 0) {
+                if (phone === "" || address === "") {
+                    errorBox.innerText = "Sila isi Nombor Telefon dan Alamat Penuh untuk penghantaran.";
+                    errorBox.style.display = "block";
+                    // Scroll ke ruangan error
+                    document.getElementById('tempah').scrollIntoView({ behavior: 'smooth' });
+                    return; // Henti proses jika tak lengkap
+                }
+            }
+            
+            // Sembunyi error jika melepasi validasi
+            errorBox.style.display = "none";
+
+            // Tentukan jenis baju berdasarkan Add-on
             let jenisBaju = "Round Neck Lengan Pendek";
-            
             if(data.addonSleeve > 0 && data.addonCollar > 0) {
                 jenisBaju = "Berkolar Lengan Panjang";
             } else if (data.addonSleeve > 0) {
@@ -610,30 +719,43 @@
                 jenisBaju = "Berkolar Lengan Pendek";
             }
 
-            // Nombor Telefon WhatsApp Admin (Format: 60 + nombor tanpa 0 di depan)
-            const phone = "60136201301";
+            // Nombor Telefon WhatsApp Admin
+            const adminPhone = "60136201301";
 
-            // Format Mesej WhatsApp
+            // Bina Mesej WhatsApp
             let message = `*TEMPAHAN BAJU SPX MERDEKA 2026 🇲🇾*\n\n`;
             message += `Hi, saya telah buat bayaran untuk tempahan dengan butiran berikut:\n\n`;
-            message += `*Nama :* ${customName}\n`;
-            message += `*Jenis:* ${jenisBaju}\n`;
-            message += `*Saiz:* ${data.sizeName}\n`;
-            message += `*Kuantiti:* ${data.qty} helai\n`;
-            message += `--------------------------\n`;
-            message += `*Jumlah Dibayar: RM ${data.total}*\n`;
-            message += `--------------------------\n\n`;
-            message += `Saya sertakan resit DuitNow (AEON Bank) bersama mesej ini. Mohon semak & sahkan ya. Terima kasih!`;
-
-            // Encode text untuk URL
-            const encodedMessage = encodeURIComponent(message);
             
-            // Buka Link WhatsApp
-            const whatsappLink = `https://api.whatsapp.com/send?phone=${phone}&text=${encodedMessage}`;
+            message += `👕 *BUTIRAN BAJU:*\n`;
+            message += `Nama (Rujukan) : ${customName}\n`;
+            message += `Jenis : ${jenisBaju}\n`;
+            message += `Saiz : ${data.sizeName}\n`;
+            message += `Kuantiti : ${data.qty} helai\n\n`;
+
+            message += `📦 *BUTIRAN PENGHANTARAN:*\n`;
+            message += `Kaedah : ${deliveryText}\n`;
+            if (deliveryVal > 0) {
+                message += `No Tel : ${phone}\n`;
+                message += `Alamat : ${address}\n`;
+            }
+            message += `\n`;
+
+            message += `💰 *RINGKASAN BAYARAN:*\n`;
+            message += `Harga Baju: RM ${data.totalShirtPrice}\n`;
+            message += `Kos Pos: RM ${data.deliveryCas}\n`;
+            message += `--------------------------\n`;
+            message += `*JUMLAH DIBAYAR: RM ${data.grandTotal}*\n`;
+            message += `--------------------------\n\n`;
+            
+            message += `Saya sertakan resit DuitNow bersama mesej ini. Mohon semak. Terima kasih!`;
+
+            // Encode & Buka WhatsApp
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappLink = `https://api.whatsapp.com/send?phone=${adminPhone}&text=${encodedMessage}`;
             window.open(whatsappLink, '_blank');
         }
 
-        // Initialize kalkulator pada muat turun pertama
+        // Initialize sistem
         window.onload = calculateTotal;
     </script>
 </body>
