@@ -633,26 +633,33 @@
     </div>
 
     <!-- JavaScript for Calculator and WhatsApp Logic -->
-        <script>
+            <script>
         const BASE_PRICE = 45;
-        // Gantikan URL di bawah dengan URL Web App anda (yang berakhir dengan /exec)
-        const scriptURL = "https://script.google.com/macros/s/AKfycbyyBTBK3GUZBM2PsPhamUYR0E8sm6h3E304jNtnq4w2G6ewhengr_4trjqidcYruBXZ4g/exec";
 
+        // Tunjuk/Sembunyi ruangan alamat berdasarkan pilihan penghantaran
         function toggleDelivery() {
             const deliveryVal = parseInt(document.getElementById('deliverySelect').value);
             const deliveryBox = document.getElementById('deliveryDetails');
-            deliveryBox.style.display = (deliveryVal > 0) ? 'block' : 'none';
+            
+            if (deliveryVal > 0) {
+                deliveryBox.style.display = 'block';
+            } else {
+                deliveryBox.style.display = 'none';
+            }
             document.getElementById('errorContainer').style.display = 'none';
         }
 
         function calculateTotal() {
             let qty = parseInt(document.getElementById('kuantiti').value) || 1;
             if (qty < 1) qty = 1;
+
             let addonSleeve = document.getElementById('lenganPanjang').checked ? 7 : 0;
             let addonCollar = document.getElementById('berkolar').checked ? 8 : 0;
+
             let sizeSelect = document.getElementById('sizeSelect');
             let sizeCas = parseInt(sizeSelect.value);
             let exactSizeName = sizeSelect.options[sizeSelect.selectedIndex].text.replace(/\(\+RM\d+\)/g, '').trim();
+
             let deliveryCas = parseInt(document.getElementById('deliverySelect').value) || 0;
 
             let pricePerItem = BASE_PRICE + sizeCas + addonSleeve + addonCollar;
@@ -662,7 +669,16 @@
             document.getElementById('totalPriceDisplay').innerText = "RM " + grandTotal;
             document.getElementById('breakdownDisplay').innerText = `Termasuk kos penghantaran RM${deliveryCas}`;
             
-            return { grandTotal, totalShirtPrice, qty, addonSleeve, addonCollar, sizeName: exactSizeName, deliveryCas };
+            return {
+                pricePerItem,
+                totalShirtPrice,
+                grandTotal,
+                qty,
+                addonSleeve,
+                addonCollar,
+                sizeName: exactSizeName,
+                deliveryCas
+            };
         }
 
         async function submitToWhatsApp() {
@@ -670,43 +686,58 @@
             const data = calculateTotal();
             const errorBox = document.getElementById('errorContainer');
             
+            // Masukkan URL Google Apps Script anda di sini
+            const scriptURL = "MASUKKAN_URL_WEB_APP_ANDA_DI_SINI";
+            
             const customName = document.getElementById('customName').value.trim() || 'Tiada';
             const areateam = document.getElementById('areateam').value.trim() || 'Tiada';
             const deliverySelect = document.getElementById('deliverySelect');
+            const deliveryVal = parseInt(deliverySelect.value);
             const deliveryText = deliverySelect.options[deliverySelect.selectedIndex].text.replace(/\(\+RM\d+\)/g, '').trim();
             const phone = document.getElementById('phoneNum').value.trim();
             const address = document.getElementById('address').value.trim();
 
-            if (parseInt(deliverySelect.value) > 0 && (phone === "" || address === "")) {
-                errorBox.innerText = "Sila isi Nombor Telefon dan Alamat Penuh.";
+            if (deliveryVal > 0 && (phone === "" || address === "")) {
+                errorBox.innerText = "Sila isi Nombor Telefon dan Alamat Penuh untuk penghantaran.";
                 errorBox.style.display = "block";
                 document.getElementById('tempah').scrollIntoView({ behavior: 'smooth' });
                 return;
             }
 
+            // Tukar state butang untuk UX
             btn.disabled = true;
-            btn.innerText = "Sedang menghantar...";
+            btn.innerText = "Memproses...";
 
-            // 1. Hantar data ke Google Sheets
+            // 1. Hantar Data ke Google Sheet
             try {
                 await fetch(`${scriptURL}?nama=${encodeURIComponent(customName)}&team=${encodeURIComponent(areateam)}&saiz=${encodeURIComponent(data.sizeName)}&kuantiti=${data.qty}&total=${data.grandTotal}&alamat=${encodeURIComponent(address)}`, {
                     method: 'POST',
                     mode: 'no-cors'
                 });
             } catch (err) {
-                console.error("Gagal hantar ke Sheets", err);
+                console.error("Gagal hantar ke Sheets, meneruskan ke WhatsApp...", err);
             }
 
-            // 2. Buka WhatsApp
+            // 2. Bina Mesej
             let jenisBaju = "Round Neck Lengan Pendek";
             if(data.addonSleeve > 0 && data.addonCollar > 0) jenisBaju = "Berkolar Lengan Panjang";
             else if (data.addonSleeve > 0) jenisBaju = "Round Neck Lengan Panjang";
             else if (data.addonCollar > 0) jenisBaju = "Berkolar Lengan Pendek";
 
-            let message = `*TEMPAHAN BAJU SPX MERDEKA 2026*\n\nNama: ${customName}\nTeam: ${areateam}\nJenis: ${jenisBaju}\nSaiz: ${data.sizeName}\nKuantiti: ${data.qty}\nKaedah: ${deliveryText}\nJumlah: RM ${data.grandTotal}\n\nSaya sertakan resit bayaran.`;
+            let message = `*TEMPAHAN BAJU SPX MERDEKA 2026 🇲🇾*\n\n`;
+            message += `Hi, saya telah buat bayaran untuk tempahan dengan butiran berikut:\n\n`;
+            message += `👕 *BUTIRAN BAJU:*\nNama (Rujukan) : ${customName}\nTEAM AREA : ${areateam}\nJenis : ${jenisBaju}\nSaiz : ${data.sizeName}\nKuantiti : ${data.qty} helai\n\n`;
+            message += `📦 *BUTIRAN PENGHANTARAN:*\nKaedah : ${deliveryText}\n`;
+            if (deliveryVal > 0) {
+                message += `No Tel : ${phone}\nAlamat : ${address}\n`;
+            }
+            message += `\n💰 *JUMLAH DIBAYAR: RM ${data.grandTotal}*\n\nSaya sertakan resit DuitNow bersama mesej ini. Mohon semak. Terima kasih!`;
+
+            // 3. Buka WhatsApp
+            const adminPhone = "60136201301";
+            window.open(`https://api.whatsapp.com/send?phone=${adminPhone}&text=${encodeURIComponent(message)}`, '_blank');
             
-            window.open(`https://api.whatsapp.com/send?phone=60136201301&text=${encodeURIComponent(message)}`, '_blank');
-            
+            // Reset butang
             btn.disabled = false;
             btn.innerText = "Sahkan Tempahan ke WhatsApp";
         }
