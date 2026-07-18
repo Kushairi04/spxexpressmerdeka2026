@@ -28,9 +28,21 @@
         .container { max-width: 800px; margin: 0 auto; padding: 0 20px; }
 
         /* Hero */
-        .hero { background: linear-gradient(135deg, var(--secondary) 0%, #001133 100%); color: var(--white); padding: 60px 20px 120px; text-align: center; border-bottom-left-radius: 40px; border-bottom-right-radius: 40px; position: relative; overflow: hidden; }
-        .hero::before { content: ''; position: absolute; top: -50%; right: -20%; width: 300px; height: 300px; background: radial-gradient(circle, rgba(227,0,15,0.2) 0%, rgba(0,0,0,0) 70%); border-radius: 50%; }
-        .badge { background-color: var(--accent); color: var(--text-dark); padding: 6px 14px; border-radius: 20px; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 20px; display: inline-block; }
+        .hero { 
+            background: linear-gradient(135deg, var(--secondary) 0%, #001133 100%); 
+            color: var(--white); padding: 60px 20px 120px; text-align: center; 
+            border-bottom-left-radius: 40px; border-bottom-right-radius: 40px; 
+            position: relative; overflow: hidden; 
+        }
+        .hero::before { 
+            content: ''; position: absolute; top: -50%; right: -20%; width: 300px; height: 300px; 
+            background: radial-gradient(circle, rgba(227,0,15,0.2) 0%, rgba(0,0,0,0) 70%); border-radius: 50%; 
+        }
+        .badge { 
+            background-color: var(--accent); color: var(--text-dark); padding: 6px 14px; 
+            border-radius: 20px; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; 
+            margin-bottom: 20px; display: inline-block; 
+        }
         .hero h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 15px; }
         .hero p { font-size: 1.1rem; opacity: 0.9; margin-bottom: 25px; max-width: 600px; margin-inline: auto; }
         .price-tag { font-size: 3rem; font-weight: 800; color: var(--accent); margin: 10px 0 20px; }
@@ -40,21 +52,34 @@
         .product-preview { margin-top: -80px; margin-bottom: 40px; position: relative; z-index: 10; }
         .image-gallery { display: grid; grid-template-columns: 1fr; gap: 20px; }
         @media (min-width: 600px) { .image-gallery { grid-template-columns: 1fr 1fr; } }
-        .product-preview img { width: 100%; height: auto; border-radius: var(--radius); box-shadow: 0 20px 25px -5px rgba(0,0,0,0.2); border: 4px solid var(--white); background-color: var(--white); }
-        .image-caption { font-size: 0.9rem; font-weight: 700; background: var(--white); padding: 8px 16px; border-radius: 8px; box-shadow: var(--shadow); margin-top: 12px; display: inline-block; }
+        .product-preview img { 
+            width: 100%; height: auto; border-radius: var(--radius); 
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.2); border: 4px solid var(--white); 
+            background-color: var(--white); 
+        }
+        .image-caption { 
+            font-size: 0.9rem; font-weight: 700; background: var(--white); padding: 8px 16px; 
+            border-radius: 8px; box-shadow: var(--shadow); margin-top: 12px; display: inline-block; 
+        }
 
         /* Card & Forms */
         .card { background: var(--white); border-radius: var(--radius); padding: 30px; box-shadow: var(--shadow-lg); margin-bottom: 30px; }
         .form-group { margin-bottom: 20px; }
         .form-group label { display: block; font-weight: 700; margin-bottom: 8px; }
-        .form-control { width: 100%; padding: 12px 15px; border: 2px solid #E5E7EB; border-radius: 8px; font-size: 1rem; background: var(--bg-light); }
+        .form-control { 
+            width: 100%; padding: 12px 15px; border: 2px solid #E5E7EB; border-radius: 8px; 
+            font-size: 1rem; background: var(--bg-light); 
+        }
         .form-control:focus { outline: none; border-color: var(--secondary); background: var(--white); }
         .radio-group { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
         @media (max-width: 600px) { .radio-group { grid-template-columns: 1fr; } }
         
         .radio-card { position: relative; cursor: pointer; }
         .radio-card input { position: absolute; opacity: 0; }
-        .radio-content { border: 2px solid #E5E7EB; border-radius: 8px; padding: 15px; text-align: center; height: 100%; display: flex; flex-direction: column; justify-content: center; background: var(--white); }
+        .radio-content { 
+            border: 2px solid #E5E7EB; border-radius: 8px; padding: 15px; text-align: center; 
+            height: 100%; display: flex; flex-direction: column; justify-content: center; background: var(--white); 
+        }
         .radio-card input:checked ~ .radio-content { border-color: var(--primary); background: #FEF2F2; }
         .radio-title { font-weight: 700; }
         .radio-price { font-size: 0.9rem; color: var(--primary); font-weight: 600; }
@@ -70,7 +95,11 @@
         .qr-container img { max-width: 200px; height: auto; }
 
         /* Button */
-        .btn-whatsapp { display: block; width: 100%; background-color: #25D366; color: white; text-align: center; padding: 18px; border-radius: 50px; font-size: 1.2rem; font-weight: 800; border: none; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4); text-decoration: none; }
+        .btn-whatsapp { 
+            display: block; width: 100%; background-color: #25D366; color: white; text-align: center; 
+            padding: 18px; border-radius: 50px; font-size: 1.2rem; font-weight: 800; border: none; 
+            cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4); text-decoration: none; 
+        }
         .btn-whatsapp:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6); }
 
         /* Admin Dashboard Styles */
@@ -81,7 +110,7 @@
         th, td { padding: 12px; text-align: left; border-bottom: 1px solid #E5E7EB; }
         th { background-color: var(--secondary); color: white; }
         tr:hover { background-color: #F3F4F6; }
-        .btn-admin { background: var(--secondary); color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: 600; display: block; width: 100%; text-align: center; text-decoration: none;}
+        .btn-admin { background: var(--secondary); color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: 600; text-align: center; text-decoration: none;}
         .status-badge { background: #FEF3C7; color: #D97706; padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; }
         
         /* Modal Overlay */
@@ -111,9 +140,9 @@
             <input type="password" id="adminPasswordInput" class="form-control" placeholder="Kata Laluan" onkeypress="window.handleEnter(event)">
             <div id="adminError" class="error-message" style="margin-top: 15px; font-size: 0.85rem;">Kata laluan salah! Sila cuba lagi.</div>
             
-            <div style="margin-top: 20px; display: flex; gap: 10px;">
-                <button onclick="window.closeAdminLogin()" class="btn-admin" style="background: var(--text-light);">Batal</button>
-                <button onclick="window.verifyAdmin()" class="btn-admin" style="background: var(--secondary);">Log Masuk</button>
+            <div style="margin-top: 20px; display: flex; gap: 10px; width: 100%;">
+                <button onclick="window.closeAdminLogin()" class="btn-admin" style="background: var(--text-light); flex:1;">Batal</button>
+                <button onclick="window.verifyAdmin()" class="btn-admin" style="background: var(--secondary); flex:1;">Log Masuk</button>
             </div>
         </div>
     </div>
@@ -233,8 +262,8 @@
                         <p style="font-size: 0.85rem; color: var(--primary); font-weight: bold;">⚠️ Sila Screenshot resit bayaran anda untuk WhatsApp.</p>
                     </div>
 
-                    <!-- Butang ini tidak lagi disabled, ia akan sentiasa berfungsi -->
-                    <button type="button" id="submitBtn" class="btn-whatsapp" onclick="window.processOrder()">
+                    <!-- Butang ini akan sentiasa berfungsi -->
+                    <button type="button" class="btn-whatsapp" onclick="window.processOrder()">
                         Sahkan Tempahan ke WhatsApp
                     </button>
                 </form>
@@ -250,7 +279,11 @@
     <div class="container" id="adminView">
         <div class="admin-header">
             <h2>Pangkalan Data Tempahan</h2>
-            <button onclick="window.closeAdminView()" class="btn-admin" style="width: auto; margin:0; background: var(--error);">Log Keluar</button>
+            <div style="display:flex; gap:10px; align-items:center;">
+                <!-- Status Pangkalan Data Firebase -->
+                <span id="dbStatus" style="font-size:0.85rem; padding: 4px 10px; border-radius:20px; background:#FCA5A5; color:#7F1D1D; font-weight:bold;">Menyambung...</span>
+                <button onclick="window.closeAdminView()" class="btn-admin" style="background: var(--error);">Log Keluar</button>
+            </div>
         </div>
         
         <div class="table-responsive">
@@ -272,13 +305,12 @@
         </div>
     </div>
 
-    <!-- SCRIPT UTAMA: Logik UI & Borang (Akan sentiasa berfungsi) -->
+    <!-- SCRIPT UTAMA (Logik Antaramuka Pengguna) -->
     <script>
         const BASE_PRICE = 45;
-        const KATA_LALUAN_SEBENAR = "spx2026";
+        const KATA_LALUAN_SEBENAR = "spx2026"; // Anda boleh tukar password admin di sini
         window.isAdminLoggedIn = false;
 
-        // 1. Fungsi UI Borang Tempahan
         window.toggleDelivery = function() {
             const deliveryVal = parseInt(document.getElementById('deliverySelect').value);
             document.getElementById('deliveryDetails').style.display = (deliveryVal > 0) ? 'block' : 'none';
@@ -288,27 +320,22 @@
         window.calculateTotal = function() {
             let qty = parseInt(document.getElementById('kuantiti').value) || 1;
             if (qty < 1) qty = 1;
-
             let addonSleeve = document.getElementById('lenganPanjang').checked ? 7 : 0;
             let addonCollar = document.getElementById('berkolar').checked ? 8 : 0;
-            
             let sizeSelect = document.getElementById('sizeSelect');
             let sizeCas = parseInt(sizeSelect.value);
             let sizeName = sizeSelect.options[sizeSelect.selectedIndex].text.replace(/\(\+RM\d+\)/g, '').trim();
-            
             let deliveryCas = parseInt(document.getElementById('deliverySelect').value) || 0;
-
+            
             let pricePerItem = BASE_PRICE + sizeCas + addonSleeve + addonCollar;
             let totalShirtPrice = pricePerItem * qty;
             let grandTotal = totalShirtPrice + deliveryCas;
 
             document.getElementById('totalPriceDisplay').innerText = "RM " + grandTotal;
             document.getElementById('breakdownDisplay').innerText = `Termasuk kos penghantaran RM${deliveryCas}`;
-            
             return { pricePerItem, totalShirtPrice, grandTotal, qty, addonSleeve, addonCollar, sizeName, deliveryCas };
         }
 
-        // 2. Fungsi Login Admin UI
         window.initiateAdminLogin = function() {
             if (window.isAdminLoggedIn) {
                 document.getElementById('customerView').style.display = 'none';
@@ -333,7 +360,6 @@
                 window.closeAdminLogin();
                 document.getElementById('customerView').style.display = 'none';
                 document.getElementById('adminView').style.display = 'block';
-                // Trigger load if firebase module is ready
                 if(window.loadAdminData) window.loadAdminData();
             } else {
                 document.getElementById('adminError').style.display = 'block';
@@ -350,7 +376,7 @@
             if (event.key === "Enter") window.verifyAdmin();
         };
 
-        // 3. Proses Tempahan & Generate WhatsApp (Dijamin berfungsi sentiasa)
+        // Logik Tempahan (Akan sentiasa buka WhatsApp walau apa pun berlaku pada Database)
         window.processOrder = async function() {
             const data = window.calculateTotal();
             const errorBox = document.getElementById('errorContainer');
@@ -363,17 +389,13 @@
             const phone = document.getElementById('phoneNum').value.trim();
             const address = document.getElementById('address').value.trim();
 
-            // Validasi Data
             if (areateam === "") {
                 errorBox.innerText = "Sila isi TEAM AREA.";
-                errorBox.style.display = "block";
-                return;
+                errorBox.style.display = "block"; return;
             }
-
             if (deliveryVal > 0 && (phone === "" || address === "")) {
                 errorBox.innerText = "Sila isi Nombor Telefon dan Alamat Penuh untuk penghantaran.";
-                errorBox.style.display = "block";
-                return;
+                errorBox.style.display = "block"; return;
             }
             errorBox.style.display = "none";
 
@@ -382,143 +404,135 @@
             else if (data.addonSleeve > 0) jenisBaju = "Round Neck Lengan Panjang";
             else if (data.addonCollar > 0) jenisBaju = "Berkolar Lengan Pendek";
 
-            // Tunjuk Loading
             document.getElementById('loadingOverlay').style.display = 'flex';
 
-            // Cuba hantar ke Firebase jika sistem Firebase sedia ada (Tunggu max 2 saat)
+            // Simpan ke pangkalan data jika wujud
             if (window.saveOrderToFirebase) {
                 try {
                     await window.saveOrderToFirebase({
-                        namaRujukan: customName,
-                        teamArea: areateam,
-                        jenisBaju: jenisBaju,
-                        saiz: data.sizeName,
-                        kuantiti: data.qty,
-                        kaedahPenghantaran: deliveryText,
-                        noTel: phone || "-",
-                        alamat: address || "-",
-                        hargaBaju: data.totalShirtPrice,
-                        kosPos: data.deliveryCas,
-                        jumlahBayaran: data.grandTotal,
-                        status: "Menunggu Resit"
+                        namaRujukan: customName, teamArea: areateam, jenisBaju: jenisBaju,
+                        saiz: data.sizeName, kuantiti: data.qty, kaedahPenghantaran: deliveryText,
+                        noTel: phone || "-", alamat: address || "-", hargaBaju: data.totalShirtPrice,
+                        kosPos: data.deliveryCas, jumlahBayaran: data.grandTotal, status: "Menunggu Resit"
                     });
                 } catch (e) {
-                    console.log("Firebase tidak direkod, tetapi pesanan WhatsApp diteruskan.");
+                    console.log("Firebase tidak disambung. Terus menyambung ke WhatsApp.");
                 }
             }
 
             // Bina Ayat WhatsApp
             const adminPhone = "60136201301";
-            let message = `*TEMPAHAN BAJU SPX MERDEKA 2026 🇲🇾*\n\n`;
-            message += `Hi, saya telah buat bayaran. Ini butiran pesanan saya:\n\n`;
-            message += `👕 *BUTIRAN BAJU:*\n`;
-            message += `Nama (Rujukan) : ${customName}\n`;
-            message += `TEAM AREA : ${areateam}\n`;
-            message += `Jenis : ${jenisBaju}\n`;
-            message += `Saiz : ${data.sizeName}\n`;
-            message += `Kuantiti : ${data.qty} helai\n\n`;
-            message += `📦 *BUTIRAN PENGHANTARAN:*\n`;
-            message += `Kaedah : ${deliveryText}\n`;
-            if (deliveryVal > 0) {
-                message += `No Tel : ${phone}\n`;
-                message += `Alamat : ${address}\n`;
-            }
-            message += `\n💰 *RINGKASAN BAYARAN:*\n`;
-            message += `Harga Baju: RM ${data.totalShirtPrice}\n`;
-            message += `Kos Pos: RM ${data.deliveryCas}\n`;
-            message += `*JUMLAH DIBAYAR: RM ${data.grandTotal}*\n\n`;
-            message += `Saya sertakan resit DuitNow di sini. Terima kasih!`;
+            let message = `*TEMPAHAN BAJU SPX MERDEKA 2026 🇲🇾*\n\nHi, saya telah buat bayaran. Ini butiran pesanan saya:\n\n👕 *BUTIRAN BAJU:*\nNama (Rujukan) : ${customName}\nTEAM AREA : ${areateam}\nJenis : ${jenisBaju}\nSaiz : ${data.sizeName}\nKuantiti : ${data.qty} helai\n\n📦 *BUTIRAN PENGHANTARAN:*\nKaedah : ${deliveryText}\n`;
+            if (deliveryVal > 0) { message += `No Tel : ${phone}\nAlamat : ${address}\n`; }
+            message += `\n💰 *RINGKASAN BAYARAN:*\nHarga Baju: RM ${data.totalShirtPrice}\nKos Pos: RM ${data.deliveryCas}\n*JUMLAH DIBAYAR: RM ${data.grandTotal}*\n\nSaya sertakan resit DuitNow di sini. Terima kasih!`;
 
             const whatsappLink = `https://api.whatsapp.com/send?phone=${adminPhone}&text=${encodeURIComponent(message)}`;
             
-            // Sembunyi Loading & Buka WhatsApp
+            // Buka WhatsApp
             setTimeout(() => {
                 document.getElementById('loadingOverlay').style.display = 'none';
                 window.open(whatsappLink, '_blank');
-                
-                // Reset form
                 document.getElementById('orderForm').reset();
                 window.calculateTotal();
                 window.toggleDelivery();
-            }, 500); // delay pendek untuk pastikan loading nampak
+            }, 500);
         };
     </script>
 
-    <!-- SCRIPT FIREBASE (Backend - Progressive Enhancement) -->
+    <!-- SCRIPT PANGKALAN DATA (FIREBASE ONLINE ANDA) -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
         import { getFirestore, collection, addDoc, onSnapshot, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-analytics.js";
+
+        // Firebase Configuration Milik Anda
+        const firebaseConfig = {
+            apiKey: "AIzaSyClhjYsOQApIUut8lyxN25J3955-HjXRPg",
+            authDomain: "spxexpressmerdeka2026.firebaseapp.com",
+            projectId: "spxexpressmerdeka2026",
+            storageBucket: "spxexpressmerdeka2026.firebasestorage.app",
+            messagingSenderId: "97087466113",
+            appId: "1:97087466113:web:3227f2484c5c96378cfb80",
+            measurementId: "G-FFVLM6VKD6"
+        };
 
         let db = null;
         let ordersRef = null;
         let currentUser = null;
 
-        // Semak jika fail ini dijalankan di platform yang mempunyai integrasi Firebase
-        if (typeof __firebase_config !== 'undefined' && __firebase_config !== "") {
-            try {
-                const firebaseConfig = JSON.parse(__firebase_config);
-                const app = initializeApp(firebaseConfig);
-                const auth = getAuth(app);
-                db = getFirestore(app);
-                
-                const appId = typeof __app_id !== 'undefined' ? __app_id : 'spx-merdeka-app';
-                ordersRef = collection(db, 'artifacts', appId, 'public', 'data', 'tempahan_baju');
+        try {
+            // Memulakan Firebase
+            const app = initializeApp(firebaseConfig);
+            const analytics = getAnalytics(app);
+            const auth = getAuth(app);
+            db = getFirestore(app);
+            
+            // Menetapkan koleksi (folder) dalam pangkalan data Firestore anda
+            ordersRef = collection(db, 'tempahan_baju');
 
-                const initAuth = async () => {
-                    if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
-                        await signInWithCustomToken(auth, __initial_auth_token);
-                    } else {
-                        await signInAnonymously(auth);
+            // Log Masuk secara 'Anonymous' untuk membenarkan penulisan data
+            signInAnonymously(auth).catch((error) => {
+                console.error("Gagal log masuk Anonymous. Sila pastikan ia dihidupkan di Firebase:", error);
+            });
+
+            onAuthStateChanged(auth, (user) => {
+                if (user) {
+                    currentUser = user;
+                    // Jika admin sedang buka panel, muat semula data automatik
+                    if (window.isAdminLoggedIn && window.loadAdminData) {
+                        window.loadAdminData();
                     }
-                };
-                initAuth();
+                }
+            });
 
-                onAuthStateChanged(auth, (user) => {
-                    if (user) {
-                        currentUser = user;
-                        if (window.isAdminLoggedIn) window.loadAdminData();
-                    }
-                });
-
-            } catch (error) {
-                console.error("Firebase Gagal Dimulakan:", error);
-            }
+        } catch (error) {
+            console.error("Terdapat ralat semasa memulakan Firebase:", error);
         }
 
-        // Fungsi yang dipanggil oleh UI (script utama) untuk simpan ke database
+        // Fungsi menyimpan data (dipanggil dari fungsi utama proses pesanan)
         window.saveOrderToFirebase = async function(orderData) {
             if (!db || !currentUser || !ordersRef) return Promise.reject("Firebase offline");
             
-            // Tambah metadata
             orderData.timestamp = serverTimestamp();
             orderData.userId = currentUser.uid;
             
             return await addDoc(ordersRef, orderData);
         };
 
-        // Fungsi Admin Load Data Database
+        // Fungsi memuatkan data secara Masa Nyata (Real-time) di Panel Admin
         window.loadAdminData = function() {
             const tbody = document.getElementById('adminTableBody');
+            const statusBadge = document.getElementById('dbStatus');
             
             if (!db || !currentUser) {
-                tbody.innerHTML = '<tr><td colspan="6" style="text-align:center; color: var(--error);">Database Offline: Data tempatan sahaja / Semak Konfigurasi Pelayan.</td></tr>';
+                statusBadge.innerText = "OFFLINE";
+                statusBadge.style.background = "#FCA5A5";
+                statusBadge.style.color = "#7F1D1D";
+                tbody.innerHTML = '<tr><td colspan="6" style="text-align:center; padding:30px;"><h3 style="color:var(--error); margin-bottom:10px;">🔴 Database Offline</h3><p style="font-size:0.9rem;">Sila semak konfigurasi Firebase anda.</p></td></tr>';
                 return;
             }
 
+            // Kemaskini Status kepada ONLINE
+            statusBadge.innerText = "ONLINE";
+            statusBadge.style.background = "#D1FAE5";
+            statusBadge.style.color = "#065F46";
+
+            // Mendengar perubahan pada database secara live
             onSnapshot(ordersRef, (snapshot) => {
                 tbody.innerHTML = '';
                 
                 if (snapshot.empty) {
-                    tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;">Belum ada pesanan direkodkan di Database.</td></tr>';
+                    tbody.innerHTML = '<tr><td colspan="6" style="text-align:center; padding:20px;">Belum ada pesanan direkodkan.</td></tr>';
                     return;
                 }
 
                 let ordersArray = [];
-                snapshot.forEach((doc) => {
-                    ordersArray.push({ id: doc.id, ...doc.data() });
+                snapshot.forEach((doc) => { 
+                    ordersArray.push({ id: doc.id, ...doc.data() }); 
                 });
                 
+                // Susun pesanan: Paling baharu di atas
                 ordersArray.sort((a, b) => {
                     let timeA = a.timestamp ? a.timestamp.toMillis() : Date.now();
                     let timeB = b.timestamp ? b.timestamp.toMillis() : Date.now();
@@ -531,56 +545,23 @@
                         const dateObj = data.timestamp.toDate();
                         dateStr = dateObj.toLocaleDateString('ms-MY') + ' ' + dateObj.toLocaleTimeString('ms-MY', { hour: '2-digit', minute:'2-digit' });
                     }
-
                     const tr = document.createElement('tr');
                     tr.innerHTML = `
                         <td style="font-size:0.8rem; color:#6B7280;">${dateStr}</td>
-                        <td>
-                            <strong>${data.kuantiti}x ${data.jenisBaju}</strong><br>
-                            <span style="font-size:0.85rem;">Saiz: ${data.saiz}</span>
-                        </td>
-                        <td>
-                            <strong>${data.teamArea}</strong><br>
-                            <span style="font-size:0.85rem;">Ref: ${data.namaRujukan}</span>
-                        </td>
-                        <td>
-                            ${data.kaedahPenghantaran}<br>
-                            <span style="font-size:0.8rem; color:#4B5563;">${data.noTel}</span>
-                        </td>
+                        <td><strong>${data.kuantiti}x ${data.jenisBaju}</strong><br><span style="font-size:0.85rem;">Saiz: ${data.saiz}</span></td>
+                        <td><strong>${data.teamArea}</strong><br><span style="font-size:0.85rem;">Ref: ${data.namaRujukan}</span></td>
+                        <td>${data.kaedahPenghantaran}<br><span style="font-size:0.8rem; color:#4B5563;">${data.noTel}</span></td>
                         <td style="font-weight:bold; color:var(--primary);">RM${data.jumlahBayaran}</td>
                         <td><span class="status-badge">${data.status || 'Berjaya'}</span></td>
                     `;
                     tbody.appendChild(tr);
                 });
             }, (error) => {
-                console.error("Ralat mengambil data admin:", error);
-                tbody.innerHTML = '<tr><td colspan="6" style="text-align:center; color: var(--error);">Ralat menarik data dari Database.</td></tr>';
+                console.error("Ralat Database:", error);
+                tbody.innerHTML = '<tr><td colspan="6" style="text-align:center; color: var(--error);">Ralat menarik data. (Sila pastikan Firestore Rules membenarkan baca/tulis).</td></tr>';
             });
         };
     </script>
-    <script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-analytics.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
-
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  const firebaseConfig = {
-    apiKey: "AIzaSyClhjYsOQApIUut8lyxN25J3955-HjXRPg",
-    authDomain: "spxexpressmerdeka2026.firebaseapp.com",
-    projectId: "spxexpressmerdeka2026",
-    storageBucket: "spxexpressmerdeka2026.firebasestorage.app",
-    messagingSenderId: "97087466113",
-    appId: "1:97087466113:web:3227f2484c5c96378cfb80",
-    measurementId: "G-FFVLM6VKD6"
-  };
-
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-</script>
 </body>
 </html>
 
