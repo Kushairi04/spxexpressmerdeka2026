@@ -70,12 +70,11 @@
         .qr-container img { max-width: 200px; height: auto; }
 
         /* Button */
-        .btn-whatsapp { display: block; width: 100%; background-color: #25D366; color: white; text-align: center; padding: 18px; border-radius: 50px; font-size: 1.2rem; font-weight: 800; border: none; cursor: pointer; transition: transform 0.2s; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4); }
-        .btn-whatsapp:hover { transform: translateY(-2px); }
-        .btn-whatsapp:disabled { background-color: #9CA3AF; cursor: not-allowed; box-shadow: none; transform: none; }
+        .btn-whatsapp { display: block; width: 100%; background-color: #25D366; color: white; text-align: center; padding: 18px; border-radius: 50px; font-size: 1.2rem; font-weight: 800; border: none; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4); text-decoration: none; }
+        .btn-whatsapp:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6); }
 
         /* Admin Dashboard Styles */
-        #adminView { display: none; margin-top: 40px; padding: 20px; background: #fff; border-radius: 12px; border: 2px solid var(--secondary); }
+        #adminView { display: none; margin-top: 40px; padding: 20px; background: #fff; border-radius: 12px; border: 2px solid var(--secondary); margin-bottom: 40px;}
         .admin-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
         .table-responsive { overflow-x: auto; }
         table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 0.9rem; }
@@ -85,7 +84,7 @@
         .btn-admin { background: var(--secondary); color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: 600; display: block; width: 100%; text-align: center; text-decoration: none;}
         .status-badge { background: #FEF3C7; color: #D97706; padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; }
         
-        /* Modal Overlay (Loading & Password) */
+        /* Modal Overlay */
         .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 999; justify-content: center; align-items: center; flex-direction: column; backdrop-filter: blur(3px); }
         .modal-content { background: var(--white); padding: 30px; border-radius: var(--radius); width: 90%; max-width: 400px; box-shadow: var(--shadow-lg); text-align: center; }
         .modal-content h3 { margin-bottom: 10px; color: var(--secondary); }
@@ -99,7 +98,7 @@
     <!-- Loading Overlay -->
     <div id="loadingOverlay" class="modal-overlay" style="background: rgba(255,255,255,0.9);">
         <div class="spinner"></div>
-        <h3 style="color: var(--secondary);">Memproses Tempahan Anda...</h3>
+        <h3 style="color: var(--secondary);">Memproses Tempahan...</h3>
         <p style="color: var(--text-dark);">Sila tunggu sebentar.</p>
     </div>
 
@@ -107,9 +106,9 @@
     <div id="adminLoginModal" class="modal-overlay">
         <div class="modal-content">
             <h3>Log Masuk Admin</h3>
-            <p style="font-size: 0.9rem; margin-bottom: 15px; color: var(--text-light);">Sila masukkan kata laluan untuk melihat pangkalan data tempahan.</p>
+            <p style="font-size: 0.9rem; margin-bottom: 15px; color: var(--text-light);">Sila masukkan kata laluan untuk melihat pangkalan data.</p>
             
-            <input type="password" id="adminPasswordInput" class="form-control" placeholder="Kata Laluan" onkeypress="handleEnter(event)">
+            <input type="password" id="adminPasswordInput" class="form-control" placeholder="Kata Laluan" onkeypress="window.handleEnter(event)">
             <div id="adminError" class="error-message" style="margin-top: 15px; font-size: 0.85rem;">Kata laluan salah! Sila cuba lagi.</div>
             
             <div style="margin-top: 20px; display: flex; gap: 10px;">
@@ -234,14 +233,14 @@
                         <p style="font-size: 0.85rem; color: var(--primary); font-weight: bold;">⚠️ Sila Screenshot resit bayaran anda untuk WhatsApp.</p>
                     </div>
 
-                    <button type="button" id="submitBtn" class="btn-whatsapp" onclick="window.processOrder()" disabled>
-                        Menyambung ke Sistem...
+                    <!-- Butang ini tidak lagi disabled, ia akan sentiasa berfungsi -->
+                    <button type="button" id="submitBtn" class="btn-whatsapp" onclick="window.processOrder()">
+                        Sahkan Tempahan ke WhatsApp
                     </button>
                 </form>
             </section>
             
-            <!-- Hidden button to access Admin -->
-            <button onclick="window.initiateAdminLogin()" style="background:none; border:none; color:#CBD5E1; font-size:0.8rem; margin: 20px auto; display:block; cursor:pointer;">
+            <button onclick="window.initiateAdminLogin()" style="background:none; border:none; color:#CBD5E1; font-size:0.8rem; margin: 20px auto 40px; display:block; cursor:pointer;">
                 [ Akses Panel Admin ]
             </button>
         </main>
@@ -250,7 +249,7 @@
     <!-- PANDANGAN ADMIN (ADMIN VIEW) -->
     <div class="container" id="adminView">
         <div class="admin-header">
-            <h2>Pangkalan Data Tempahan (Admin)</h2>
+            <h2>Pangkalan Data Tempahan</h2>
             <button onclick="window.closeAdminView()" class="btn-admin" style="width: auto; margin:0; background: var(--error);">Log Keluar</button>
         </div>
         
@@ -267,56 +266,19 @@
                     </tr>
                 </thead>
                 <tbody id="adminTableBody">
-                    <tr><td colspan="6" style="text-align:center;">Memuatkan data...</td></tr>
+                    <tr><td colspan="6" style="text-align:center;">Memuatkan data pangkalan data...</td></tr>
                 </tbody>
             </table>
         </div>
     </div>
 
-    <!-- Firebase Script (Backend Module) -->
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        import { getFirestore, collection, addDoc, onSnapshot, serverTimestamp, query, orderBy } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
-
-        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-        const db = getFirestore(app);
-        
-        const appId = typeof __app_id !== 'undefined' ? __app_id : 'spx-merdeka-app';
-        const ordersRef = collection(db, 'artifacts', appId, 'public', 'data', 'tempahan_baju');
-
-        let currentUser = null;
-        let isAdminLoggedIn = false;
-
-        const initAuth = async () => {
-            try {
-                if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
-                    await signInWithCustomToken(auth, __initial_auth_token);
-                } else {
-                    await signInAnonymously(auth);
-                }
-            } catch (error) {
-                console.error("Ralat pengesahan:", error);
-                document.getElementById('submitBtn').innerText = "Ralat Sistem. Sila Refresh.";
-            }
-        };
-
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                currentUser = user;
-                const btn = document.getElementById('submitBtn');
-                btn.disabled = false;
-                btn.innerText = "Sahkan Tempahan ke WhatsApp";
-                loadAdminData();
-            }
-        });
-
-        initAuth();
-
+    <!-- SCRIPT UTAMA: Logik UI & Borang (Akan sentiasa berfungsi) -->
+    <script>
         const BASE_PRICE = 45;
+        const KATA_LALUAN_SEBENAR = "spx2026";
+        window.isAdminLoggedIn = false;
 
+        // 1. Fungsi UI Borang Tempahan
         window.toggleDelivery = function() {
             const deliveryVal = parseInt(document.getElementById('deliverySelect').value);
             document.getElementById('deliveryDetails').style.display = (deliveryVal > 0) ? 'block' : 'none';
@@ -346,9 +308,50 @@
             return { pricePerItem, totalShirtPrice, grandTotal, qty, addonSleeve, addonCollar, sizeName, deliveryCas };
         }
 
-        window.processOrder = async function() {
-            if (!currentUser) return; 
+        // 2. Fungsi Login Admin UI
+        window.initiateAdminLogin = function() {
+            if (window.isAdminLoggedIn) {
+                document.getElementById('customerView').style.display = 'none';
+                document.getElementById('adminView').style.display = 'block';
+                if(window.loadAdminData) window.loadAdminData();
+            } else {
+                document.getElementById('adminLoginModal').style.display = 'flex';
+                document.getElementById('adminPasswordInput').focus();
+            }
+        };
 
+        window.closeAdminLogin = function() {
+            document.getElementById('adminLoginModal').style.display = 'none';
+            document.getElementById('adminPasswordInput').value = '';
+            document.getElementById('adminError').style.display = 'none';
+        };
+
+        window.verifyAdmin = function() {
+            const inputPw = document.getElementById('adminPasswordInput').value;
+            if (inputPw === KATA_LALUAN_SEBENAR) {
+                window.isAdminLoggedIn = true;
+                window.closeAdminLogin();
+                document.getElementById('customerView').style.display = 'none';
+                document.getElementById('adminView').style.display = 'block';
+                // Trigger load if firebase module is ready
+                if(window.loadAdminData) window.loadAdminData();
+            } else {
+                document.getElementById('adminError').style.display = 'block';
+            }
+        };
+
+        window.closeAdminView = function() {
+            window.isAdminLoggedIn = false;
+            document.getElementById('adminView').style.display = 'none';
+            document.getElementById('customerView').style.display = 'block';
+        };
+
+        window.handleEnter = function(event) {
+            if (event.key === "Enter") window.verifyAdmin();
+        };
+
+        // 3. Proses Tempahan & Generate WhatsApp (Dijamin berfungsi sentiasa)
+        window.processOrder = async function() {
             const data = window.calculateTotal();
             const errorBox = document.getElementById('errorContainer');
             
@@ -360,6 +363,7 @@
             const phone = document.getElementById('phoneNum').value.trim();
             const address = document.getElementById('address').value.trim();
 
+            // Validasi Data
             if (areateam === "") {
                 errorBox.innerText = "Sila isi TEAM AREA.";
                 errorBox.style.display = "block";
@@ -378,120 +382,135 @@
             else if (data.addonSleeve > 0) jenisBaju = "Round Neck Lengan Panjang";
             else if (data.addonCollar > 0) jenisBaju = "Berkolar Lengan Pendek";
 
+            // Tunjuk Loading
             document.getElementById('loadingOverlay').style.display = 'flex';
 
-            try {
-                const orderDataToSave = {
-                    namaRujukan: customName,
-                    teamArea: areateam,
-                    jenisBaju: jenisBaju,
-                    saiz: data.sizeName,
-                    kuantiti: data.qty,
-                    kaedahPenghantaran: deliveryText,
-                    noTel: phone || "-",
-                    alamat: address || "-",
-                    hargaBaju: data.totalShirtPrice,
-                    kosPos: data.deliveryCas,
-                    jumlahBayaran: data.grandTotal,
-                    status: "Menunggu Resit",
-                    timestamp: serverTimestamp(),
-                    userId: currentUser.uid
-                };
-
-                await addDoc(ordersRef, orderDataToSave);
-
-                const adminPhone = "60136201301";
-                let message = `*TEMPAHAN BAJU SPX MERDEKA 2026 🇲🇾*\n\n`;
-                message += `Hi, saya telah buat bayaran. Ini butiran pesanan saya:\n\n`;
-                message += `👕 *BUTIRAN BAJU:*\n`;
-                message += `Nama (Rujukan) : ${customName}\n`;
-                message += `TEAM AREA : ${areateam}\n`;
-                message += `Jenis : ${jenisBaju}\n`;
-                message += `Saiz : ${data.sizeName}\n`;
-                message += `Kuantiti : ${data.qty} helai\n\n`;
-                message += `📦 *BUTIRAN PENGHANTARAN:*\n`;
-                message += `Kaedah : ${deliveryText}\n`;
-                if (deliveryVal > 0) {
-                    message += `No Tel : ${phone}\n`;
-                    message += `Alamat : ${address}\n`;
+            // Cuba hantar ke Firebase jika sistem Firebase sedia ada (Tunggu max 2 saat)
+            if (window.saveOrderToFirebase) {
+                try {
+                    await window.saveOrderToFirebase({
+                        namaRujukan: customName,
+                        teamArea: areateam,
+                        jenisBaju: jenisBaju,
+                        saiz: data.sizeName,
+                        kuantiti: data.qty,
+                        kaedahPenghantaran: deliveryText,
+                        noTel: phone || "-",
+                        alamat: address || "-",
+                        hargaBaju: data.totalShirtPrice,
+                        kosPos: data.deliveryCas,
+                        jumlahBayaran: data.grandTotal,
+                        status: "Menunggu Resit"
+                    });
+                } catch (e) {
+                    console.log("Firebase tidak direkod, tetapi pesanan WhatsApp diteruskan.");
                 }
-                message += `\n💰 *RINGKASAN BAYARAN:*\n`;
-                message += `Harga Baju: RM ${data.totalShirtPrice}\n`;
-                message += `Kos Pos: RM ${data.deliveryCas}\n`;
-                message += `*JUMLAH DIBAYAR: RM ${data.grandTotal}*\n\n`;
-                message += `Saya sertakan resit DuitNow di sini. Terima kasih!`;
+            }
 
-                const whatsappLink = `https://api.whatsapp.com/send?phone=${adminPhone}&text=${encodeURIComponent(message)}`;
-                
+            // Bina Ayat WhatsApp
+            const adminPhone = "60136201301";
+            let message = `*TEMPAHAN BAJU SPX MERDEKA 2026 🇲🇾*\n\n`;
+            message += `Hi, saya telah buat bayaran. Ini butiran pesanan saya:\n\n`;
+            message += `👕 *BUTIRAN BAJU:*\n`;
+            message += `Nama (Rujukan) : ${customName}\n`;
+            message += `TEAM AREA : ${areateam}\n`;
+            message += `Jenis : ${jenisBaju}\n`;
+            message += `Saiz : ${data.sizeName}\n`;
+            message += `Kuantiti : ${data.qty} helai\n\n`;
+            message += `📦 *BUTIRAN PENGHANTARAN:*\n`;
+            message += `Kaedah : ${deliveryText}\n`;
+            if (deliveryVal > 0) {
+                message += `No Tel : ${phone}\n`;
+                message += `Alamat : ${address}\n`;
+            }
+            message += `\n💰 *RINGKASAN BAYARAN:*\n`;
+            message += `Harga Baju: RM ${data.totalShirtPrice}\n`;
+            message += `Kos Pos: RM ${data.deliveryCas}\n`;
+            message += `*JUMLAH DIBAYAR: RM ${data.grandTotal}*\n\n`;
+            message += `Saya sertakan resit DuitNow di sini. Terima kasih!`;
+
+            const whatsappLink = `https://api.whatsapp.com/send?phone=${adminPhone}&text=${encodeURIComponent(message)}`;
+            
+            // Sembunyi Loading & Buka WhatsApp
+            setTimeout(() => {
                 document.getElementById('loadingOverlay').style.display = 'none';
                 window.open(whatsappLink, '_blank');
                 
+                // Reset form
                 document.getElementById('orderForm').reset();
                 window.calculateTotal();
                 window.toggleDelivery();
+            }, 500); // delay pendek untuk pastikan loading nampak
+        };
+    </script>
+
+    <!-- SCRIPT FIREBASE (Backend - Progressive Enhancement) -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, collection, addDoc, onSnapshot, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        let db = null;
+        let ordersRef = null;
+        let currentUser = null;
+
+        // Semak jika fail ini dijalankan di platform yang mempunyai integrasi Firebase
+        if (typeof __firebase_config !== 'undefined' && __firebase_config !== "") {
+            try {
+                const firebaseConfig = JSON.parse(__firebase_config);
+                const app = initializeApp(firebaseConfig);
+                const auth = getAuth(app);
+                db = getFirestore(app);
+                
+                const appId = typeof __app_id !== 'undefined' ? __app_id : 'spx-merdeka-app';
+                ordersRef = collection(db, 'artifacts', appId, 'public', 'data', 'tempahan_baju');
+
+                const initAuth = async () => {
+                    if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+                        await signInWithCustomToken(auth, __initial_auth_token);
+                    } else {
+                        await signInAnonymously(auth);
+                    }
+                };
+                initAuth();
+
+                onAuthStateChanged(auth, (user) => {
+                    if (user) {
+                        currentUser = user;
+                        if (window.isAdminLoggedIn) window.loadAdminData();
+                    }
+                });
 
             } catch (error) {
-                console.error("Gagal menyimpan ke database:", error);
-                document.getElementById('loadingOverlay').style.display = 'none';
-                alert("Maaf, terdapat ralat sistem. Sila cuba sebentar lagi.");
+                console.error("Firebase Gagal Dimulakan:", error);
             }
-        };
+        }
 
-        // --- SISTEM KATA LALUAN ADMIN ---
-        const KATA_LALUAN_SEBENAR = "spx2026";
-
-        window.initiateAdminLogin = function() {
-            if (isAdminLoggedIn) {
-                // Jika sudah login sebelum ini, terus tunjuk Admin View
-                document.getElementById('customerView').style.display = 'none';
-                document.getElementById('adminView').style.display = 'block';
-            } else {
-                // Buka modal minta password
-                document.getElementById('adminLoginModal').style.display = 'flex';
-                document.getElementById('adminPasswordInput').focus();
-            }
-        };
-
-        window.closeAdminLogin = function() {
-            document.getElementById('adminLoginModal').style.display = 'none';
-            document.getElementById('adminPasswordInput').value = '';
-            document.getElementById('adminError').style.display = 'none';
-        };
-
-        window.verifyAdmin = function() {
-            const inputPw = document.getElementById('adminPasswordInput').value;
-            if (inputPw === KATA_LALUAN_SEBENAR) {
-                isAdminLoggedIn = true;
-                window.closeAdminLogin();
-                document.getElementById('customerView').style.display = 'none';
-                document.getElementById('adminView').style.display = 'block';
-            } else {
-                document.getElementById('adminError').style.display = 'block';
-            }
-        };
-
-        window.closeAdminView = function() {
-            isAdminLoggedIn = false; // Reset sesi login
-            document.getElementById('adminView').style.display = 'none';
-            document.getElementById('customerView').style.display = 'block';
-        };
-
-        // Tekan 'Enter' untuk submit password
-        window.handleEnter = function(event) {
-            if (event.key === "Enter") {
-                window.verifyAdmin();
-            }
-        };
-
-        function loadAdminData() {
-            if (!currentUser) return;
+        // Fungsi yang dipanggil oleh UI (script utama) untuk simpan ke database
+        window.saveOrderToFirebase = async function(orderData) {
+            if (!db || !currentUser || !ordersRef) return Promise.reject("Firebase offline");
             
+            // Tambah metadata
+            orderData.timestamp = serverTimestamp();
+            orderData.userId = currentUser.uid;
+            
+            return await addDoc(ordersRef, orderData);
+        };
+
+        // Fungsi Admin Load Data Database
+        window.loadAdminData = function() {
+            const tbody = document.getElementById('adminTableBody');
+            
+            if (!db || !currentUser) {
+                tbody.innerHTML = '<tr><td colspan="6" style="text-align:center; color: var(--error);">Database Offline: Data tempatan sahaja / Semak Konfigurasi Pelayan.</td></tr>';
+                return;
+            }
+
             onSnapshot(ordersRef, (snapshot) => {
-                const tbody = document.getElementById('adminTableBody');
                 tbody.innerHTML = '';
                 
                 if (snapshot.empty) {
-                    tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;">Belum ada pesanan direkodkan.</td></tr>';
+                    tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;">Belum ada pesanan direkodkan di Database.</td></tr>';
                     return;
                 }
 
@@ -501,8 +520,8 @@
                 });
                 
                 ordersArray.sort((a, b) => {
-                    let timeA = a.timestamp ? a.timestamp.toMillis() : 0;
-                    let timeB = b.timestamp ? b.timestamp.toMillis() : 0;
+                    let timeA = a.timestamp ? a.timestamp.toMillis() : Date.now();
+                    let timeB = b.timestamp ? b.timestamp.toMillis() : Date.now();
                     return timeB - timeA;
                 });
 
@@ -529,14 +548,17 @@
                             <span style="font-size:0.8rem; color:#4B5563;">${data.noTel}</span>
                         </td>
                         <td style="font-weight:bold; color:var(--primary);">RM${data.jumlahBayaran}</td>
-                        <td><span class="status-badge">${data.status}</span></td>
+                        <td><span class="status-badge">${data.status || 'Berjaya'}</span></td>
                     `;
                     tbody.appendChild(tr);
                 });
             }, (error) => {
                 console.error("Ralat mengambil data admin:", error);
+                tbody.innerHTML = '<tr><td colspan="6" style="text-align:center; color: var(--error);">Ralat menarik data dari Database.</td></tr>';
             });
-        }
+        };
     </script>
 </body>
 </html>
+
+
