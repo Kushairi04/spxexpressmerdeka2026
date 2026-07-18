@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tempahan Baju SPX MERDEKA 2026 🇲🇾</title>
-    <!-- Menggunakan font moden untuk gaya premium -->
+    <!-- Font moden -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <style>
-        /* CSS Variables untuk Tema Merdeka & Premium */
+        /* CSS Variables */
         :root {
-            --primary: #E3000F; /* Merah Merdeka */
-            --secondary: #00225D; /* Biru Gelap */
-            --accent: #FFCC00; /* Kuning Diraja */
+            --primary: #E3000F;
+            --secondary: #00225D;
+            --accent: #FFCC00;
             --text-dark: #1F2937;
             --text-light: #6B7280;
             --bg-light: #F9FAFB;
@@ -19,647 +19,321 @@
             --success: #10B981;
             --error: #EF4444;
             --radius: 12px;
-            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background-color: var(--bg-light); color: var(--text-dark); line-height: 1.6; }
+        .container { max-width: 800px; margin: 0 auto; padding: 0 20px; }
 
-        body {
-            background-color: var(--bg-light);
-            color: var(--text-dark);
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-        }
+        /* Hero */
+        .hero { background: linear-gradient(135deg, var(--secondary) 0%, #001133 100%); color: var(--white); padding: 60px 20px 120px; text-align: center; border-bottom-left-radius: 40px; border-bottom-right-radius: 40px; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: -50%; right: -20%; width: 300px; height: 300px; background: radial-gradient(circle, rgba(227,0,15,0.2) 0%, rgba(0,0,0,0) 70%); border-radius: 50%; }
+        .badge { background-color: var(--accent); color: var(--text-dark); padding: 6px 14px; border-radius: 20px; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 20px; display: inline-block; }
+        .hero h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 15px; }
+        .hero p { font-size: 1.1rem; opacity: 0.9; margin-bottom: 25px; max-width: 600px; margin-inline: auto; }
+        .price-tag { font-size: 3rem; font-weight: 800; color: var(--accent); margin: 10px 0 20px; }
+        .price-tag span { font-size: 1.2rem; font-weight: 600; opacity: 0.8; color: var(--white); }
 
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+        /* Gallery */
+        .product-preview { margin-top: -80px; margin-bottom: 40px; position: relative; z-index: 10; }
+        .image-gallery { display: grid; grid-template-columns: 1fr; gap: 20px; }
+        @media (min-width: 600px) { .image-gallery { grid-template-columns: 1fr 1fr; } }
+        .product-preview img { width: 100%; height: auto; border-radius: var(--radius); box-shadow: 0 20px 25px -5px rgba(0,0,0,0.2); border: 4px solid var(--white); background-color: var(--white); }
+        .image-caption { font-size: 0.9rem; font-weight: 700; background: var(--white); padding: 8px 16px; border-radius: 8px; box-shadow: var(--shadow); margin-top: 12px; display: inline-block; }
 
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, var(--secondary) 0%, #001133 100%);
-            color: var(--white);
-            padding: 60px 20px 120px;
-            text-align: center;
-            border-bottom-left-radius: 40px;
-            border-bottom-right-radius: 40px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%; right: -20%;
-            width: 300px; height: 300px;
-            background: radial-gradient(circle, rgba(227,0,15,0.2) 0%, rgba(0,0,0,0) 70%);
-            border-radius: 50%;
-        }
-
-        .badge {
-            background-color: var(--accent);
-            color: var(--text-dark);
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-weight: 700;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            display: inline-block;
-            margin-bottom: 20px;
-            box-shadow: var(--shadow);
-        }
-
-        .hero h1 {
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 15px;
-            line-height: 1.2;
-        }
-
-        .hero p {
-            font-size: 1.1rem;
-            opacity: 0.9;
-            margin-bottom: 25px;
-            max-width: 600px;
-            margin-inline: auto;
-        }
-
-        .price-tag {
-            font-size: 3rem;
-            font-weight: 800;
-            color: var(--accent);
-            margin: 10px 0 20px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .price-tag span {
-            font-size: 1.2rem;
-            font-weight: 600;
-            opacity: 0.8;
-            color: var(--white);
-        }
-
-        /* Product Image Section */
-        .product-preview {
-            margin-top: -80px;
-            margin-bottom: 40px;
-            position: relative;
-            z-index: 10;
-        }
-
-        .image-gallery {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
-        }
-
-        @media (min-width: 600px) {
-            .image-gallery {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        .image-wrapper {
-            text-align: center;
-        }
-
-        .product-preview img {
-            width: 100%;
-            height: auto;
-            border-radius: var(--radius);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
-            border: 4px solid var(--white);
-            background-color: var(--white);
-            object-fit: cover;
-        }
+        /* Card & Forms */
+        .card { background: var(--white); border-radius: var(--radius); padding: 30px; box-shadow: var(--shadow-lg); margin-bottom: 30px; }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; font-weight: 700; margin-bottom: 8px; }
+        .form-control { width: 100%; padding: 12px 15px; border: 2px solid #E5E7EB; border-radius: 8px; font-size: 1rem; background: var(--bg-light); }
+        .form-control:focus { outline: none; border-color: var(--secondary); background: var(--white); }
+        .radio-group { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        @media (max-width: 600px) { .radio-group { grid-template-columns: 1fr; } }
         
-        .image-caption {
-            font-size: 0.9rem;
-            color: var(--text-dark);
-            margin-top: 12px;
-            font-weight: 700;
-            background: var(--white);
-            padding: 8px 16px;
-            border-radius: 8px;
-            box-shadow: var(--shadow);
-            display: inline-block;
-        }
+        .radio-card { position: relative; cursor: pointer; }
+        .radio-card input { position: absolute; opacity: 0; }
+        .radio-content { border: 2px solid #E5E7EB; border-radius: 8px; padding: 15px; text-align: center; height: 100%; display: flex; flex-direction: column; justify-content: center; background: var(--white); }
+        .radio-card input:checked ~ .radio-content { border-color: var(--primary); background: #FEF2F2; }
+        .radio-title { font-weight: 700; }
+        .radio-price { font-size: 0.9rem; color: var(--primary); font-weight: 600; }
 
-        /* Features Section */
-        .features {
-            padding: 0 0 40px;
-        }
-
-        .card {
-            background: var(--white);
-            border-radius: var(--radius);
-            padding: 30px;
-            box-shadow: var(--shadow-lg);
-            margin-bottom: 30px;
-        }
-
-        .feature-list {
-            list-style: none;
-        }
-
-        .feature-list li {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-            font-size: 1.1rem;
-            font-weight: 600;
-        }
-
-        .feature-list li span {
-            background: rgba(16, 185, 129, 0.1);
-            color: var(--success);
-            width: 32px;
-            height: 32px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            margin-right: 15px;
-            font-size: 1.2rem;
-        }
-
-        /* Timeline / Urgency */
-        .timeline {
-            background: #FFFBEB;
-            border-left: 5px solid var(--accent);
-            padding: 20px;
-            border-radius: 0 var(--radius) var(--radius) 0;
-            margin-bottom: 30px;
-        }
-
-        .timeline-item {
-            margin-bottom: 10px;
-            display: flex;
-            align-items: flex-start;
-        }
-
-        .timeline-item strong {
-            min-width: 130px;
-            display: inline-block;
-            color: var(--primary);
-        }
-
-        /* Calculator / Order Form */
-        .order-section h2 {
-            text-align: center;
-            font-size: 1.8rem;
-            margin-bottom: 25px;
-            color: var(--secondary);
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            font-weight: 700;
-            margin-bottom: 8px;
-            color: var(--text-dark);
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 12px 15px;
-            border: 2px solid #E5E7EB;
-            border-radius: 8px;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            background: var(--bg-light);
-            font-family: inherit;
-        }
-
-        textarea.form-control {
-            resize: vertical;
-        }
-
-        .form-control:focus {
-            outline: none;
-            border-color: var(--secondary);
-            background: var(--white);
-            box-shadow: 0 0 0 3px rgba(0, 34, 93, 0.1);
-        }
-
-        .radio-group {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-        }
-
-        /* Custom Radio Buttons */
-        .radio-card {
-            position: relative;
-            cursor: pointer;
-        }
-        .radio-card input {
-            position: absolute;
-            opacity: 0;
-            cursor: pointer;
-        }
-        .radio-content {
-            border: 2px solid #E5E7EB;
-            border-radius: 8px;
-            padding: 15px;
-            text-align: center;
-            transition: all 0.2s ease;
-            background: var(--white);
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-        .radio-card input:checked ~ .radio-content {
-            border-color: var(--primary);
-            background: #FEF2F2;
-        }
-        .radio-title {
-            font-weight: 700;
-            display: block;
-        }
-        .radio-price {
-            font-size: 0.9rem;
-            color: var(--primary);
-            font-weight: 600;
-        }
-
-        /* Delivery Section */
-        .delivery-details {
-            display: none;
-            background: #F8FAFC;
-            border: 1px solid #E2E8F0;
-            padding: 20px;
-            border-radius: 8px;
-            margin-top: 15px;
-            animation: fadeIn 0.3s ease-in-out;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Error Message Box */
-        .error-message {
-            display: none;
-            background-color: #FEF2F2;
-            color: var(--error);
-            padding: 12px 15px;
-            border-radius: 8px;
-            border-left: 4px solid var(--error);
-            margin-bottom: 20px;
-            font-weight: 600;
-            font-size: 0.95rem;
-        }
-
-        /* Total & QR Payment Section */
-        .payment-section {
-            background: #F8FAFC;
-            border: 2px dashed #CBD5E1;
-            padding: 25px;
-            border-radius: var(--radius);
-            text-align: center;
-            margin-top: 30px;
-            margin-bottom: 25px;
-        }
-
-        .total-box {
-            background: var(--secondary);
-            color: var(--white);
-            padding: 20px;
-            border-radius: 8px;
-            text-align: center;
-            margin-bottom: 20px;
-            box-shadow: var(--shadow);
-        }
-
-        .total-box h3 {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            font-weight: 400;
-        }
-
-        .total-amount {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: var(--accent);
-        }
+        .delivery-details { display: none; background: #F8FAFC; border: 1px solid #E2E8F0; padding: 20px; border-radius: 8px; margin-top: 15px; }
+        .error-message { display: none; background: #FEF2F2; color: var(--error); padding: 12px; border-radius: 8px; border-left: 4px solid var(--error); margin-bottom: 20px; font-weight: 600; }
         
-        .breakdown {
-            font-size: 0.9rem;
-            color: #93C5FD;
-            margin-top: 5px;
-        }
+        /* Payment Section */
+        .payment-section { background: #F8FAFC; border: 2px dashed #CBD5E1; padding: 25px; border-radius: var(--radius); text-align: center; margin-top: 30px; margin-bottom: 25px; }
+        .total-box { background: var(--secondary); color: var(--white); padding: 20px; border-radius: 8px; margin-bottom: 20px; }
+        .total-amount { font-size: 2.5rem; font-weight: 800; color: var(--accent); }
+        .qr-container { background: var(--white); padding: 20px; border-radius: var(--radius); display: inline-block; box-shadow: var(--shadow); margin: 15px 0; }
+        .qr-container img { max-width: 200px; height: auto; }
 
-        .qr-container {
-            background: var(--white);
-            padding: 20px;
-            border-radius: var(--radius);
-            display: inline-block;
-            box-shadow: var(--shadow);
-            margin: 15px 0;
-        }
+        /* Button */
+        .btn-whatsapp { display: block; width: 100%; background-color: #25D366; color: white; text-align: center; padding: 18px; border-radius: 50px; font-size: 1.2rem; font-weight: 800; border: none; cursor: pointer; transition: transform 0.2s; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4); }
+        .btn-whatsapp:hover { transform: translateY(-2px); }
+        .btn-whatsapp:disabled { background-color: #9CA3AF; cursor: not-allowed; box-shadow: none; transform: none; }
 
-        .qr-container img {
-            max-width: 200px;
-            height: auto;
-            border-radius: 8px;
-        }
-
-        .qr-instruction {
-            font-weight: 600;
-            color: var(--primary);
-            margin-bottom: 10px;
-            font-size: 1.1rem;
-        }
-
-        /* CTA Button */
-        .btn-whatsapp {
-            display: block;
-            width: 100%;
-            background-color: #25D366;
-            color: white;
-            text-align: center;
-            padding: 18px;
-            border-radius: 50px;
-            font-size: 1.2rem;
-            font-weight: 800;
-            text-decoration: none;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
-            transition: transform 0.2s, box-shadow 0.2s;
-            cursor: pointer;
-            border: none;
-        }
-
-        .btn-whatsapp:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
-        }
-
-        .note {
-            text-align: center;
-            font-size: 0.85rem;
-            color: var(--text-light);
-            margin-top: 15px;
-        }
-
-        /* Responsive */
-        @media (max-width: 600px) {
-            .hero h1 { font-size: 2rem; }
-            .radio-group { grid-template-columns: 1fr; }
-        }
-
-        /* Sticky Footer CTA Mobile */
-        .sticky-cta {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background: var(--white);
-            padding: 15px 20px;
-            box-shadow: 0 -4px 10px rgba(0,0,0,0.05);
-            display: none;
-            z-index: 100;
-        }
-        @media (max-width: 768px) {
-            .sticky-cta { display: block; }
-            body { padding-bottom: 80px; }
-        }
+        /* Admin Dashboard Styles */
+        #adminView { display: none; margin-top: 40px; padding: 20px; background: #fff; border-radius: 12px; border: 2px solid var(--secondary); }
+        .admin-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        .table-responsive { overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 0.9rem; }
+        th, td { padding: 12px; text-align: left; border-bottom: 1px solid #E5E7EB; }
+        th { background-color: var(--secondary); color: white; }
+        tr:hover { background-color: #F3F4F6; }
+        .btn-admin { background: var(--secondary); color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: 600; display: block; width: 100%; text-align: center; text-decoration: none;}
+        .status-badge { background: #FEF3C7; color: #D97706; padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; }
+        
+        /* Modal Overlay (Loading & Password) */
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 999; justify-content: center; align-items: center; flex-direction: column; backdrop-filter: blur(3px); }
+        .modal-content { background: var(--white); padding: 30px; border-radius: var(--radius); width: 90%; max-width: 400px; box-shadow: var(--shadow-lg); text-align: center; }
+        .modal-content h3 { margin-bottom: 10px; color: var(--secondary); }
+        
+        .spinner { border: 4px solid #f3f3f3; border-top: 4px solid var(--primary); border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin-bottom: 15px; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
     </style>
 </head>
 <body>
 
-    <!-- HERO SECTION -->
-    <header class="hero">
-        <div class="container">
-            <div class="badge">Edisi ISTIMEWA Kemerdekaan 69th</div>
-            <h1>SPX MERDEKA 2026 🇲🇾</h1>
-            <p>Tampil bergaya, selesa & patriotik menyambut Hari Kebangsaan dengan jersi premium eksklusif SPX Express. "SPX Maju Jaya"</p>
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="modal-overlay" style="background: rgba(255,255,255,0.9);">
+        <div class="spinner"></div>
+        <h3 style="color: var(--secondary);">Memproses Tempahan Anda...</h3>
+        <p style="color: var(--text-dark);">Sila tunggu sebentar.</p>
+    </div>
+
+    <!-- Admin Password Modal -->
+    <div id="adminLoginModal" class="modal-overlay">
+        <div class="modal-content">
+            <h3>Log Masuk Admin</h3>
+            <p style="font-size: 0.9rem; margin-bottom: 15px; color: var(--text-light);">Sila masukkan kata laluan untuk melihat pangkalan data tempahan.</p>
             
-            <div class="price-tag">
-                <span>Bermula dari</span><br>
-                RM45
+            <input type="password" id="adminPasswordInput" class="form-control" placeholder="Kata Laluan" onkeypress="handleEnter(event)">
+            <div id="adminError" class="error-message" style="margin-top: 15px; font-size: 0.85rem;">Kata laluan salah! Sila cuba lagi.</div>
+            
+            <div style="margin-top: 20px; display: flex; gap: 10px;">
+                <button onclick="window.closeAdminLogin()" class="btn-admin" style="background: var(--text-light);">Batal</button>
+                <button onclick="window.verifyAdmin()" class="btn-admin" style="background: var(--secondary);">Log Masuk</button>
             </div>
         </div>
-    </header>
+    </div>
 
-    <!-- CONTENT SECTION -->
-    <main class="container">
-        
-        <!-- PRODUCT IMAGE PREVIEW -->
-        <section class="product-preview">
-            <div class="image-gallery">
-                <div class="image-wrapper">
-                    <img src="49c08a75-1c21-45ac-98bc-052ee9704f44.jpeg" alt="Rekaan Jersi SPX Merdeka 2026" onerror="this.src='https://placehold.co/800x800/00225D/FFFFFF?text=Gambar+Rekaan+Baju'">
-                    <div class="image-caption">👕 Pandangan Hadapan & Belakang</div>
-                </div>
-                
-                <div class="image-wrapper">
-                    <img src="8fa73b09-5509-4cec-b1b6-52b3697193c4.jpeg" alt="Carta Saiz Jersi" onerror="this.src='https://placehold.co/800x800/E3000F/FFFFFF?text=Gambar+Carta+Saiz'">
-                    <div class="image-caption">📏 Carta Saiz Jersi (Size Chart)</div>
-                </div>
+    <!-- PANDANGAN PELANGGAN (CUSTOMER VIEW) -->
+    <div id="customerView">
+        <header class="hero">
+            <div class="container">
+                <div class="badge">Edisi ISTIMEWA Kemerdekaan 69th</div>
+                <h1>SPX MERDEKA 2026 🇲🇾</h1>
+                <p>Tampil bergaya, selesa & patriotik menyambut Hari Kebangsaan dengan jersi premium eksklusif SPX Express. "SPX Maju Jaya"</p>
+                <div class="price-tag"><span>Bermula dari</span><br>RM45</div>
             </div>
-        </section>
+        </header>
 
-        <!-- USP & Features -->
-        <section class="features">
-            <div class="card">
-                <ul class="feature-list">
-                    <li><span>👕</span> Kain Tebal Premium 180gsm (Selesa & Tak Panas)</li>
-                    <li><span>🎯</span> Kualiti Cetakan Penuh (Full Sublimation) Tahan Lama</li>
-                </ul>
-            </div>
+        <main class="container">
+            <section class="product-preview">
+                <div class="image-gallery">
+                    <div style="text-align: center;">
+                        <img src="49c08a75-1c21-45ac-98bc-052ee9704f44.jpeg" alt="Rekaan Jersi" onerror="this.src='https://placehold.co/800x800/00225D/FFFFFF?text=Gambar+Rekaan+Baju'">
+                        <div class="image-caption">👕 Depan & Belakang</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <img src="8fa73b09-5509-4cec-b1b6-52b3697193c4.jpeg" alt="Carta Saiz" onerror="this.src='https://placehold.co/800x800/E3000F/FFFFFF?text=Gambar+Carta+Saiz'">
+                        <div class="image-caption">📏 Carta Saiz (Size Chart)</div>
+                    </div>
+                </div>
+            </section>
 
-            <div class="timeline">
-                <div class="timeline-item">
-                    <strong>🔐 Tutup Order:</strong> 
-                    <span>8 Ogos 2026 (Khamis)</span>
-                </div>
-                <div class="timeline-item">
-                    <strong>💵 Bayaran Akhir:</strong> 
-                    <span>8 Ogos 2026 (Time gaji last)</span>
-                </div>
-                <div class="timeline-item">
-                    <strong>📦 Jangkaan Dapat:</strong> 
-                    <span>31 Ogos 2026 (In sha Allah sempat rasmi!)</span>
-                </div>
-            </div>
-
-            <!-- Order Calculator Section -->
-            <div class="card order-section" id="tempah">
+            <section class="card order-section" id="tempah">
                 <h2>Bina Baju & Buat Bayaran</h2>
-                
                 <form id="orderForm">
-                    <!-- Error Message Container -->
                     <div id="errorContainer" class="error-message"></div>
 
-                    <!-- Custom Name -->
                     <div class="form-group">
-                        <label for="customName"> NAMA (RUJUKAN) </label>
+                        <label>NAMA (RUJUKAN)</label>
                         <input type="text" id="customName" class="form-control" placeholder="Contoh: AHMAD (Kosongkan jika tak mahu)">
                     </div>
-                    
-                    <!-- Team Area -->
                     <div class="form-group">
-                        <label for="areateam"> TEAM AREA </label>
-                        <input type="text" id="areateam" class="form-control" placeholder="Contoh: CSL">
+                        <label>TEAM AREA</label>
+                        <input type="text" id="areateam" class="form-control" placeholder="Contoh: CSL" required>
                     </div>
 
-                    <!-- Sleeve & Collar Options -->
                     <div class="form-group">
                         <label>Jenis Baju (Add-on)</label>
                         <div class="radio-group" style="grid-template-columns: 1fr;">
                             <label class="radio-card">
-                                <input type="radio" name="bajuType" value="0" checked onchange="calculateTotal()">
-                                <div class="radio-content">
-                                    <span class="radio-title">Round Neck (Lengan Pendek)</span>
-                                    <span class="radio-price">Harga Asas (RM45)</span>
-                                </div>
+                                <input type="radio" name="bajuType" value="0" checked onchange="window.calculateTotal()">
+                                <div class="radio-content"><span class="radio-title">Round Neck (Lengan Pendek)</span><span class="radio-price">Harga Asas (RM45)</span></div>
                             </label>
                         </div>
                         <div class="radio-group" style="margin-top:15px;">
                             <label class="radio-card">
-                                <input type="checkbox" id="lenganPanjang" value="7" onchange="calculateTotal()">
-                                <div class="radio-content">
-                                    <span class="radio-title">Lengan Panjang</span>
-                                    <span class="radio-price">+ RM7</span>
-                                </div>
+                                <input type="checkbox" id="lenganPanjang" value="7" onchange="window.calculateTotal()">
+                                <div class="radio-content"><span class="radio-title">Lengan Panjang</span><span class="radio-price">+ RM7</span></div>
                             </label>
                             <label class="radio-card">
-                                <input type="checkbox" id="berkolar" value="8" onchange="calculateTotal()">
-                                <div class="radio-content">
-                                    <span class="radio-title">Berkolar (Collar)</span>
-                                    <span class="radio-price">+ RM8</span>
-                                </div>
+                                <input type="checkbox" id="berkolar" value="8" onchange="window.calculateTotal()">
+                                <div class="radio-content"><span class="radio-title">Berkolar (Collar)</span><span class="radio-price">+ RM8</span></div>
                             </label>
                         </div>
                     </div>
 
-                    <!-- Size Options -->
                     <div class="form-group">
                         <label>Pilih Saiz Anda</label>
-                        <select id="sizeSelect" class="form-control" onchange="calculateTotal()">
-                            <option value="0"> XS </option>
-                            <option value="0"> S </option>
-                            <option value="0" selected> M </option>
-                            <option value="0"> L </option>
-                            <option value="0"> XL </option>
-                            <option value="0"> 2XL </option>
+                        <select id="sizeSelect" class="form-control" onchange="window.calculateTotal()">
+                            <option value="0">XS</option>
+                            <option value="0">S</option>
+                            <option value="0" selected>M</option>
+                            <option value="0">L</option>
+                            <option value="0">XL</option>
+                            <option value="0">2XL</option>
                             <option value="5">Plus Size 3XL (+RM5)</option>
                             <option value="5">Plus Size 4XL (+RM5)</option>
                             <option value="5">Plus Size 5XL (+RM5)</option>
                             <option value="10">Super Plus 6XL (+RM10)</option>
-                            <option value="10">Super Plus 7XL (+RM10)</option>
                             <option value="12">Ultra Plus 8XL (+RM12)</option>
-                            <option value="12">Ultra Plus 9XL (+RM12)</option>
                         </select>
                     </div>
 
-                    <!-- Kuantiti -->
                     <div class="form-group">
                         <label>Kuantiti</label>
-                        <input type="number" id="kuantiti" class="form-control" value="1" min="1" onchange="calculateTotal()" onkeyup="calculateTotal()">
+                        <input type="number" id="kuantiti" class="form-control" value="1" min="1" onchange="window.calculateTotal()" onkeyup="window.calculateTotal()">
                     </div>
 
-                    <!-- Delivery Options -->
                     <div class="form-group">
                         <label>Kaedah Penghantaran</label>
-                        <select id="deliverySelect" class="form-control" onchange="toggleDelivery(); calculateTotal();">
-                            <option value="0">Self Collect area GOMBAK KL (Ambil Sendiri) - Percuma</option>
-                            <option value="8">Penghantaran ke Semenanjung (+RM8)</option>
-                            <option value="16">Penghantaran ke Sabah/Sarawak (+RM16)</option>
+                        <select id="deliverySelect" class="form-control" onchange="window.toggleDelivery(); window.calculateTotal();">
+                            <option value="0">Self Collect area GOMBAK KL - Percuma</option>
+                            <option value="8">Semenanjung (+RM8)</option>
+                            <option value="16">Sabah/Sarawak (+RM16)</option>
                         </select>
                     </div>
 
-                    <!-- Hidden Delivery Details -->
                     <div id="deliveryDetails" class="delivery-details">
                         <div class="form-group">
-                            <label for="phoneNum">Nombor Telefon</label>
+                            <label>Nombor Telefon</label>
                             <input type="tel" id="phoneNum" class="form-control" placeholder="Contoh: 0123456789">
                         </div>
                         <div class="form-group" style="margin-bottom: 0;">
-                            <label for="address">Alamat Penuh</label>
+                            <label>Alamat Penuh</label>
                             <textarea id="address" class="form-control" rows="3" placeholder="Masukkan alamat lengkap rumah anda..."></textarea>
                         </div>
                     </div>
 
-                    <!-- Payment & Total Section -->
                     <div class="payment-section">
                         <div class="total-box">
                             <h3>Jumlah Perlu Dibayar</h3>
                             <div class="total-amount" id="totalPriceDisplay">RM 45</div>
                             <div class="breakdown" id="breakdownDisplay">Termasuk kos penghantaran RM0</div>
                         </div>
-
                         <div class="qr-instruction">Sila Imbas (Scan) Untuk Bayaran</div>
-                        <p style="color: var(--text-light); font-size: 0.95rem; margin-bottom: 10px;">
-                            Sila buat bayaran ke DuitNow <strong>AEON Bank (Kushairi)</strong> menggunakan QR di bawah.
-                        </p>
-                        
+                        <p style="font-size: 0.9rem; color: var(--text-light);">DuitNow <strong>AEON Bank (Kushairi)</strong></p>
                         <div class="qr-container">
-                            <img src="IMG_8795.jpeg" alt="DuitNow QR Code Kushairi" onerror="this.src='https://placehold.co/400x500/E3000F/FFFFFF?text=DuitNow+QR'">
+                            <img src="IMG_8795.jpeg" alt="QR Code" onerror="this.src='https://placehold.co/400x500/E3000F/FFFFFF?text=DuitNow+QR'">
                         </div>
-
-                        <p style="font-size: 0.9rem; margin-top: 15px; color: var(--primary); font-weight: 600;">
-                            ⚠️ PENTING: Sila <i>Screenshot</i> (tangkap layar) resit bayaran anda. Anda perlu lampirkannya di dalam WhatsApp sebentar lagi.
-                        </p>
+                        <p style="font-size: 0.85rem; color: var(--primary); font-weight: bold;">⚠️ Sila Screenshot resit bayaran anda untuk WhatsApp.</p>
                     </div>
 
-                    <button type="button" class="btn-whatsapp" onclick="submitToWhatsApp()">
-                        Sahkan Tempahan ke WhatsApp
+                    <button type="button" id="submitBtn" class="btn-whatsapp" onclick="window.processOrder()" disabled>
+                        Menyambung ke Sistem...
                     </button>
-                    <p class="note">Anda akan dibawa ke aplikasi WhatsApp. <strong>Jangan lupa hantar resit sekali!</strong></p>
                 </form>
-            </div>
-        </section>
-    </main>
-
-    <!-- Sticky Mobile Button -->
-    <div class="sticky-cta">
-        <a href="#tempah" class="btn-whatsapp" style="padding: 15px; font-size: 1.1rem;">Tempah & Bayar Sekarang</a>
+            </section>
+            
+            <!-- Hidden button to access Admin -->
+            <button onclick="window.initiateAdminLogin()" style="background:none; border:none; color:#CBD5E1; font-size:0.8rem; margin: 20px auto; display:block; cursor:pointer;">
+                [ Akses Panel Admin ]
+            </button>
+        </main>
     </div>
 
-    <!-- JavaScript for Calculator and WhatsApp Logic -->
-            <script>
+    <!-- PANDANGAN ADMIN (ADMIN VIEW) -->
+    <div class="container" id="adminView">
+        <div class="admin-header">
+            <h2>Pangkalan Data Tempahan (Admin)</h2>
+            <button onclick="window.closeAdminView()" class="btn-admin" style="width: auto; margin:0; background: var(--error);">Log Keluar</button>
+        </div>
+        
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tarikh/Masa</th>
+                        <th>Maklumat Baju</th>
+                        <th>Pelanggan / Area</th>
+                        <th>Penghantaran</th>
+                        <th>Total Bayaran</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="adminTableBody">
+                    <tr><td colspan="6" style="text-align:center;">Memuatkan data...</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Firebase Script (Backend Module) -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, collection, addDoc, onSnapshot, serverTimestamp, query, orderBy } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+        
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'spx-merdeka-app';
+        const ordersRef = collection(db, 'artifacts', appId, 'public', 'data', 'tempahan_baju');
+
+        let currentUser = null;
+        let isAdminLoggedIn = false;
+
+        const initAuth = async () => {
+            try {
+                if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+                    await signInWithCustomToken(auth, __initial_auth_token);
+                } else {
+                    await signInAnonymously(auth);
+                }
+            } catch (error) {
+                console.error("Ralat pengesahan:", error);
+                document.getElementById('submitBtn').innerText = "Ralat Sistem. Sila Refresh.";
+            }
+        };
+
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                currentUser = user;
+                const btn = document.getElementById('submitBtn');
+                btn.disabled = false;
+                btn.innerText = "Sahkan Tempahan ke WhatsApp";
+                loadAdminData();
+            }
+        });
+
+        initAuth();
+
         const BASE_PRICE = 45;
 
-        // Tunjuk/Sembunyi ruangan alamat berdasarkan pilihan penghantaran
-        function toggleDelivery() {
+        window.toggleDelivery = function() {
             const deliveryVal = parseInt(document.getElementById('deliverySelect').value);
-            const deliveryBox = document.getElementById('deliveryDetails');
-            
-            if (deliveryVal > 0) {
-                deliveryBox.style.display = 'block';
-            } else {
-                deliveryBox.style.display = 'none';
-            }
+            document.getElementById('deliveryDetails').style.display = (deliveryVal > 0) ? 'block' : 'none';
             document.getElementById('errorContainer').style.display = 'none';
         }
 
-        function calculateTotal() {
+        window.calculateTotal = function() {
             let qty = parseInt(document.getElementById('kuantiti').value) || 1;
             if (qty < 1) qty = 1;
 
             let addonSleeve = document.getElementById('lenganPanjang').checked ? 7 : 0;
             let addonCollar = document.getElementById('berkolar').checked ? 8 : 0;
-
+            
             let sizeSelect = document.getElementById('sizeSelect');
             let sizeCas = parseInt(sizeSelect.value);
-            let exactSizeName = sizeSelect.options[sizeSelect.selectedIndex].text.replace(/\(\+RM\d+\)/g, '').trim();
-
+            let sizeName = sizeSelect.options[sizeSelect.selectedIndex].text.replace(/\(\+RM\d+\)/g, '').trim();
+            
             let deliveryCas = parseInt(document.getElementById('deliverySelect').value) || 0;
 
             let pricePerItem = BASE_PRICE + sizeCas + addonSleeve + addonCollar;
@@ -669,78 +343,200 @@
             document.getElementById('totalPriceDisplay').innerText = "RM " + grandTotal;
             document.getElementById('breakdownDisplay').innerText = `Termasuk kos penghantaran RM${deliveryCas}`;
             
-            return {
-                pricePerItem,
-                totalShirtPrice,
-                grandTotal,
-                qty,
-                addonSleeve,
-                addonCollar,
-                sizeName: exactSizeName,
-                deliveryCas
-            };
+            return { pricePerItem, totalShirtPrice, grandTotal, qty, addonSleeve, addonCollar, sizeName, deliveryCas };
         }
 
-        async function submitToWhatsApp() {
-            const btn = document.querySelector(".btn-whatsapp");
-            const data = calculateTotal();
+        window.processOrder = async function() {
+            if (!currentUser) return; 
+
+            const data = window.calculateTotal();
             const errorBox = document.getElementById('errorContainer');
             
-            // Masukkan URL Google Apps Script anda di sini
-            const scriptURL = "https://script.google.com/macros/s/AKfycbyyBTBK3GUZBM2PsPhamUYR0E8sm6h3E304jNtnq4w2G6ewhengr_4trjqidcYruBXZ4g/exec";
-            
             const customName = document.getElementById('customName').value.trim() || 'Tiada';
-            const areateam = document.getElementById('areateam').value.trim() || 'Tiada';
+            const areateam = document.getElementById('areateam').value.trim();
             const deliverySelect = document.getElementById('deliverySelect');
             const deliveryVal = parseInt(deliverySelect.value);
             const deliveryText = deliverySelect.options[deliverySelect.selectedIndex].text.replace(/\(\+RM\d+\)/g, '').trim();
             const phone = document.getElementById('phoneNum').value.trim();
             const address = document.getElementById('address').value.trim();
 
-            if (deliveryVal > 0 && (phone === "" || address === "")) {
-                errorBox.innerText = "Sila isi Nombor Telefon dan Alamat Penuh untuk penghantaran.";
+            if (areateam === "") {
+                errorBox.innerText = "Sila isi TEAM AREA.";
                 errorBox.style.display = "block";
-                document.getElementById('tempah').scrollIntoView({ behavior: 'smooth' });
                 return;
             }
 
-            // Tukar state butang untuk UX
-            btn.disabled = true;
-            btn.innerText = "Memproses...";
-
-            // 1. Hantar Data ke Google Sheet
-            try {
-                await fetch(`${scriptURL}?nama=${encodeURIComponent(customName)}&team=${encodeURIComponent(areateam)}&saiz=${encodeURIComponent(data.sizeName)}&kuantiti=${data.qty}&total=${data.grandTotal}&alamat=${encodeURIComponent(address)}`, {
-                    method: 'POST',
-                    mode: 'no-cors'
-                });
-            } catch (err) {
-                console.error("Gagal hantar ke Sheets, meneruskan ke WhatsApp...", err);
+            if (deliveryVal > 0 && (phone === "" || address === "")) {
+                errorBox.innerText = "Sila isi Nombor Telefon dan Alamat Penuh untuk penghantaran.";
+                errorBox.style.display = "block";
+                return;
             }
+            errorBox.style.display = "none";
 
-            // 2. Bina Mesej
             let jenisBaju = "Round Neck Lengan Pendek";
             if(data.addonSleeve > 0 && data.addonCollar > 0) jenisBaju = "Berkolar Lengan Panjang";
             else if (data.addonSleeve > 0) jenisBaju = "Round Neck Lengan Panjang";
             else if (data.addonCollar > 0) jenisBaju = "Berkolar Lengan Pendek";
 
-            let message = `*TEMPAHAN BAJU SPX MERDEKA 2026 🇲🇾*\n\n`;
-            message += `Hi, saya telah buat bayaran untuk tempahan dengan butiran berikut:\n\n`;
-            message += `👕 *BUTIRAN BAJU:*\nNama (Rujukan) : ${customName}\nTEAM AREA : ${areateam}\nJenis : ${jenisBaju}\nSaiz : ${data.sizeName}\nKuantiti : ${data.qty} helai\n\n`;
-            message += `📦 *BUTIRAN PENGHANTARAN:*\nKaedah : ${deliveryText}\n`;
-            if (deliveryVal > 0) {
-                message += `No Tel : ${phone}\nAlamat : ${address}\n`;
+            document.getElementById('loadingOverlay').style.display = 'flex';
+
+            try {
+                const orderDataToSave = {
+                    namaRujukan: customName,
+                    teamArea: areateam,
+                    jenisBaju: jenisBaju,
+                    saiz: data.sizeName,
+                    kuantiti: data.qty,
+                    kaedahPenghantaran: deliveryText,
+                    noTel: phone || "-",
+                    alamat: address || "-",
+                    hargaBaju: data.totalShirtPrice,
+                    kosPos: data.deliveryCas,
+                    jumlahBayaran: data.grandTotal,
+                    status: "Menunggu Resit",
+                    timestamp: serverTimestamp(),
+                    userId: currentUser.uid
+                };
+
+                await addDoc(ordersRef, orderDataToSave);
+
+                const adminPhone = "60136201301";
+                let message = `*TEMPAHAN BAJU SPX MERDEKA 2026 🇲🇾*\n\n`;
+                message += `Hi, saya telah buat bayaran. Ini butiran pesanan saya:\n\n`;
+                message += `👕 *BUTIRAN BAJU:*\n`;
+                message += `Nama (Rujukan) : ${customName}\n`;
+                message += `TEAM AREA : ${areateam}\n`;
+                message += `Jenis : ${jenisBaju}\n`;
+                message += `Saiz : ${data.sizeName}\n`;
+                message += `Kuantiti : ${data.qty} helai\n\n`;
+                message += `📦 *BUTIRAN PENGHANTARAN:*\n`;
+                message += `Kaedah : ${deliveryText}\n`;
+                if (deliveryVal > 0) {
+                    message += `No Tel : ${phone}\n`;
+                    message += `Alamat : ${address}\n`;
+                }
+                message += `\n💰 *RINGKASAN BAYARAN:*\n`;
+                message += `Harga Baju: RM ${data.totalShirtPrice}\n`;
+                message += `Kos Pos: RM ${data.deliveryCas}\n`;
+                message += `*JUMLAH DIBAYAR: RM ${data.grandTotal}*\n\n`;
+                message += `Saya sertakan resit DuitNow di sini. Terima kasih!`;
+
+                const whatsappLink = `https://api.whatsapp.com/send?phone=${adminPhone}&text=${encodeURIComponent(message)}`;
+                
+                document.getElementById('loadingOverlay').style.display = 'none';
+                window.open(whatsappLink, '_blank');
+                
+                document.getElementById('orderForm').reset();
+                window.calculateTotal();
+                window.toggleDelivery();
+
+            } catch (error) {
+                console.error("Gagal menyimpan ke database:", error);
+                document.getElementById('loadingOverlay').style.display = 'none';
+                alert("Maaf, terdapat ralat sistem. Sila cuba sebentar lagi.");
             }
-            message += `\n💰 *JUMLAH DIBAYAR: RM ${data.grandTotal}*\n\nSaya sertakan resit DuitNow bersama mesej ini. Mohon semak. Terima kasih!`;
+        };
 
-            // 3. Buka WhatsApp
-            const adminPhone = "60136201301";
-            window.open(`https://api.whatsapp.com/send?phone=${adminPhone}&text=${encodeURIComponent(message)}`, '_blank');
+        // --- SISTEM KATA LALUAN ADMIN ---
+        const KATA_LALUAN_SEBENAR = "spx2026";
+
+        window.initiateAdminLogin = function() {
+            if (isAdminLoggedIn) {
+                // Jika sudah login sebelum ini, terus tunjuk Admin View
+                document.getElementById('customerView').style.display = 'none';
+                document.getElementById('adminView').style.display = 'block';
+            } else {
+                // Buka modal minta password
+                document.getElementById('adminLoginModal').style.display = 'flex';
+                document.getElementById('adminPasswordInput').focus();
+            }
+        };
+
+        window.closeAdminLogin = function() {
+            document.getElementById('adminLoginModal').style.display = 'none';
+            document.getElementById('adminPasswordInput').value = '';
+            document.getElementById('adminError').style.display = 'none';
+        };
+
+        window.verifyAdmin = function() {
+            const inputPw = document.getElementById('adminPasswordInput').value;
+            if (inputPw === KATA_LALUAN_SEBENAR) {
+                isAdminLoggedIn = true;
+                window.closeAdminLogin();
+                document.getElementById('customerView').style.display = 'none';
+                document.getElementById('adminView').style.display = 'block';
+            } else {
+                document.getElementById('adminError').style.display = 'block';
+            }
+        };
+
+        window.closeAdminView = function() {
+            isAdminLoggedIn = false; // Reset sesi login
+            document.getElementById('adminView').style.display = 'none';
+            document.getElementById('customerView').style.display = 'block';
+        };
+
+        // Tekan 'Enter' untuk submit password
+        window.handleEnter = function(event) {
+            if (event.key === "Enter") {
+                window.verifyAdmin();
+            }
+        };
+
+        function loadAdminData() {
+            if (!currentUser) return;
             
-            // Reset butang
-            btn.disabled = false;
-            btn.innerText = "Sahkan Tempahan ke WhatsApp";
-        }
+            onSnapshot(ordersRef, (snapshot) => {
+                const tbody = document.getElementById('adminTableBody');
+                tbody.innerHTML = '';
+                
+                if (snapshot.empty) {
+                    tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;">Belum ada pesanan direkodkan.</td></tr>';
+                    return;
+                }
 
-        window.onload = calculateTotal;
+                let ordersArray = [];
+                snapshot.forEach((doc) => {
+                    ordersArray.push({ id: doc.id, ...doc.data() });
+                });
+                
+                ordersArray.sort((a, b) => {
+                    let timeA = a.timestamp ? a.timestamp.toMillis() : 0;
+                    let timeB = b.timestamp ? b.timestamp.toMillis() : 0;
+                    return timeB - timeA;
+                });
+
+                ordersArray.forEach((data) => {
+                    let dateStr = "Baru Saja";
+                    if (data.timestamp) {
+                        const dateObj = data.timestamp.toDate();
+                        dateStr = dateObj.toLocaleDateString('ms-MY') + ' ' + dateObj.toLocaleTimeString('ms-MY', { hour: '2-digit', minute:'2-digit' });
+                    }
+
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                        <td style="font-size:0.8rem; color:#6B7280;">${dateStr}</td>
+                        <td>
+                            <strong>${data.kuantiti}x ${data.jenisBaju}</strong><br>
+                            <span style="font-size:0.85rem;">Saiz: ${data.saiz}</span>
+                        </td>
+                        <td>
+                            <strong>${data.teamArea}</strong><br>
+                            <span style="font-size:0.85rem;">Ref: ${data.namaRujukan}</span>
+                        </td>
+                        <td>
+                            ${data.kaedahPenghantaran}<br>
+                            <span style="font-size:0.8rem; color:#4B5563;">${data.noTel}</span>
+                        </td>
+                        <td style="font-weight:bold; color:var(--primary);">RM${data.jumlahBayaran}</td>
+                        <td><span class="status-badge">${data.status}</span></td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+            }, (error) => {
+                console.error("Ralat mengambil data admin:", error);
+            });
+        }
     </script>
+</body>
+</html>
