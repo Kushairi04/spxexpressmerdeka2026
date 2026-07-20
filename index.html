@@ -296,7 +296,7 @@
         import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-analytics.js";
 
         // ==========================================
-        // FIREBASE CONFIGURATION (YOUR CONFIG INJECTED)
+        // FIREBASE CONFIGURATION
         // ==========================================
         const fallbackConfig = {
             apiKey: "AIzaSyCUPNz5rUGPMOG7wZAuFIz719JXSQit8O8",
@@ -309,7 +309,7 @@
         };
         
         const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : fallbackConfig;
-        const appId = typeof __app_id !== 'undefined' ? __app_id : 'spx-merdeka-2026'; // Nama projek rujukan
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'spx-merdeka-2026';
         
         let db, auth, currentUser = null, analytics;
 
@@ -319,7 +319,7 @@
             db = getFirestore(app);
             analytics = getAnalytics(app);
 
-            // Log Masuk Automatik tanpa kata laluan (Anonymous Login) - Wajib untuk sekuriti Firestore
+            // Log Masuk Automatik tanpa kata laluan (Anonymous Login) - Wajib untuk sekuriti
             const initAuth = async () => {
                 if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
                     await signInWithCustomToken(auth, __initial_auth_token);
@@ -425,28 +425,25 @@
                 noTelefon: phone || "Ambil Sendiri",
                 alamat: address || "Ambil Sendiri",
                 jumlahBayaran: data.grandTotal,
-                status: "Pending", // Boleh ditukar di Admin Dashboard kelak
+                status: "Pending",
                 tarikh: new Date().toISOString()
             };
 
-            // Simpan Ke Firebase Terlebih Dahulu
+            // Simpan Ke Firebase
             if (db && currentUser) {
                 try {
                     const ordersRef = collection(db, 'artifacts', appId, 'public', 'data', 'orders');
                     await addDoc(ordersRef, {
                         ...orderPayload,
-                        userId: currentUser.uid // Track sesiapa yang hantar
+                        userId: currentUser.uid
                     });
                     console.log("Tempahan berjaya direkod ke Firebase!");
                 } catch (err) {
                     console.error("Ralat menyimpan ke Firebase:", err);
-                    // Ralat pangkalan data, kita biarkan ia terus ke WhatsApp supaya jualan tak terlepas
                 }
-            } else {
-                console.warn("Firebase tiada atau tidak disahkan log masuk.");
             }
 
-            // Proses Buka WhatsApp
+            // Proses Buka WhatsApp menggunakan pautan rasmi wa.me
             const adminPhone = "60136201301";
             let message = `*TEMPAHAN BAJU SPX MERDEKA 2026 🇲🇾*\n\n`;
             message += `Hi, saya telah buat bayaran untuk tempahan dengan butiran berikut:\n\n`;
@@ -471,17 +468,19 @@
             message += `Saya sertakan resit DuitNow bersama mesej ini. Mohon semak. Terima kasih!`;
 
             const encodedMessage = encodeURIComponent(message);
-            const whatsappLink = `https://api.whatsapp.com/send?phone=${adminPhone}&text=${encodedMessage}`;
+            
+            // Penggunaan wa.me lebih efektif untuk membuka aplikasi di telefon bimbit
+            const whatsappLink = `https://wa.me/${adminPhone}?text=${encodedMessage}`;
             
             // Kembalikan status butang kepada asal
             submitBtn.innerText = originalBtnText;
             submitBtn.disabled = false;
 
-            // Buka tetingkap/aplikasi WhatsApp
-            window.open(whatsappLink, '_blank');
+            // Redirect terus pada tetingkap yang sama (window.location.href) 
+            // Ini menghalang pelayar daripada menganggapnya sebagai "Pop-up block"
+            window.location.href = whatsappLink;
         }
 
-        // Jalankan pengiraan harga semasa laman web mula-mula dibuka
         window.onload = () => {
             window.calculateTotal();
         };
